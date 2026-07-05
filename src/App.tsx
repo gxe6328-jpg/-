@@ -10,7 +10,9 @@ import {
   Share2,
   Activity,
   Plus,
-  Minus
+  Minus,
+  MessageCircle,
+  MessageSquare
 } from "lucide-react";
 import Accordions from "./components/Accordions";
 
@@ -74,15 +76,16 @@ export default function App() {
       {/* ========================================================== */}
       <div className="block lg:hidden w-full max-w-md mx-auto min-h-screen flex flex-col bg-brand-cream-light">
         
-        {/* Top Portrait Image with seamless bottom gradient fade */}
-        <div className="relative w-full aspect-[4/5] bg-brand-cream overflow-hidden">
-          <img
-            src={pavelPortrait}
-            alt="Врач-психотерапевт Веляев Павел Александрович"
-            referrerPolicy="no-referrer"
-            className="absolute inset-0 h-full w-full object-cover object-top filter contrast-[1.02] brightness-[0.98]"
-          />
-          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-brand-cream-light via-brand-cream-light/45 to-transparent pointer-events-none" />
+        {/* Top Portrait Image centered and scaled down */}
+        <div className="flex justify-center pt-8 pb-4">
+          <div className="relative w-40 h-40 rounded-full border-4 border-white shadow-md overflow-hidden bg-brand-cream shrink-0">
+            <img
+              src={pavelPortrait}
+              alt="Врач-психотерапевт Веляев Павел Александрович"
+              referrerPolicy="no-referrer"
+              className="absolute inset-0 h-full w-full object-cover object-top filter contrast-[1.02] brightness-[0.98]"
+            />
+          </div>
         </div>
 
         {/* Doctor Identity & Status */}
@@ -114,25 +117,25 @@ export default function App() {
         {/* Contact Actions styled like the mockup (white background, thin border, subtext) */}
         <div className="px-6 space-y-3 mt-4">
           <a
-            href="https://t.me"
+            href="https://vk.com"
             target="_blank"
             rel="noreferrer"
             className="w-full bg-white hover:bg-brand-cream-light/50 text-brand-slate font-sans py-4 px-6 rounded-2xl border border-brand-slate/20 hover:border-brand-slate transition-all duration-300 shadow-xs active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer"
           >
             <span className="text-xs uppercase tracking-[0.15em] font-bold text-brand-slate flex items-center gap-1.5">
-              <Send className="h-3.5 w-3.5 text-sky-500" /> СВЯЗАТЬСЯ В TELEGRAM
+              <MessageCircle className="h-3.5 w-3.5 text-blue-500" /> СВЯЗАТЬСЯ В ВКОНТАКТЕ
             </span>
             <span className="text-[9px] text-brand-slate/50 mt-1 font-normal uppercase tracking-wider">Быстрый ответ и запись на консультацию</span>
           </a>
 
           <a
-            href="https://wa.me"
+            href="https://max.ru"
             target="_blank"
             rel="noreferrer"
             className="w-full bg-white hover:bg-brand-cream-light/50 text-brand-slate font-sans py-4 px-6 rounded-2xl border border-brand-slate/20 hover:border-brand-slate transition-all duration-300 shadow-xs active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer"
           >
             <span className="text-xs uppercase tracking-[0.15em] font-bold text-brand-slate flex items-center gap-1.5">
-              <Phone className="h-3.5 w-3.5 text-emerald-500" /> НАПИСАТЬ В WHATSAPP
+              <MessageSquare className="h-3.5 w-3.5 text-brand-gold" /> МЕССЕНДЖЕР МАКС
             </span>
             <span className="text-[9px] text-brand-slate/50 mt-1 font-normal uppercase tracking-wider">Для оперативной связи в чате</span>
           </a>
@@ -253,22 +256,22 @@ export default function App() {
 
             <div className="flex items-center gap-2.5">
               <a
-                href="https://t.me"
+                href="https://vk.com"
                 target="_blank"
                 rel="noreferrer"
-                className="bg-sky-50 hover:bg-sky-100 text-sky-700 text-xs font-semibold px-4 py-2.5 rounded-xl border border-sky-100/50 transition-all flex items-center gap-1.5 cursor-pointer"
+                className="bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-semibold px-4 py-2.5 rounded-xl border border-blue-100/50 transition-all flex items-center gap-1.5 cursor-pointer"
               >
-                <Send className="h-3.5 w-3.5" />
-                <span>Telegram</span>
+                <MessageCircle className="h-3.5 w-3.5 text-blue-500" />
+                <span>ВКонтакте</span>
               </a>
               <a
-                href="https://wa.me"
+                href="https://max.ru"
                 target="_blank"
                 rel="noreferrer"
-                className="bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-semibold px-4 py-2.5 rounded-xl border border-emerald-100/50 transition-all flex items-center gap-1.5 cursor-pointer"
+                className="bg-amber-50 hover:bg-amber-100 text-amber-700 text-xs font-semibold px-4 py-2.5 rounded-xl border border-amber-100/50 transition-all flex items-center gap-1.5 cursor-pointer"
               >
-                <Phone className="h-3.5 w-3.5" />
-                <span>WhatsApp</span>
+                <MessageSquare className="h-3.5 w-3.5 text-brand-gold-dark" />
+                <span>Мессенджер МАКС</span>
               </a>
             </div>
           </div>
@@ -416,15 +419,16 @@ export default function App() {
           {/* Right Column (5 cols, Sticky) */}
           <div className="col-span-5 sticky top-28 space-y-8 flex flex-col items-stretch">
             
-            {/* Portrait Card */}
-            <div className="relative w-full aspect-[4/5] bg-brand-cream rounded-3xl border border-brand-cream-dark/60 shadow-md overflow-hidden group mx-auto">
-              <img
-                src={pavelPortrait}
-                alt="Врач-психотерапевт Веляев Павел Александрович"
-                referrerPolicy="no-referrer"
-                className="absolute inset-0 h-full w-full object-cover object-top filter contrast-[1.02] brightness-[0.98] group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-charcoal/20 via-transparent to-transparent pointer-events-none" />
+            {/* Portrait Card (Scaled Down) */}
+            <div className="flex justify-center">
+              <div className="relative w-56 h-56 bg-brand-cream rounded-full border-4 border-white shadow-lg overflow-hidden group">
+                <img
+                  src={pavelPortrait}
+                  alt="Врач-психотерапевт Веляев Павел Александрович"
+                  referrerPolicy="no-referrer"
+                  className="absolute inset-0 h-full w-full object-cover object-top filter contrast-[1.02] brightness-[0.98] group-hover:scale-105 transition-transform duration-700"
+                />
+              </div>
             </div>
 
             {/* Contact Panel */}
@@ -446,22 +450,22 @@ export default function App() {
 
               <div className="grid grid-cols-2 gap-3">
                 <a
-                  href="https://t.me"
+                  href="https://vk.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-sky-50 hover:bg-sky-100 text-sky-700 text-xs font-semibold py-3.5 px-4 rounded-xl border border-sky-100/50 transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer"
+                  className="bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-semibold py-3.5 px-4 rounded-xl border border-blue-100/50 transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer"
                 >
-                  <Send className="h-4 w-4 text-sky-500" />
-                  <span className="tracking-wider uppercase text-[10px]">МОЙ ТЕЛЕГРАМ</span>
+                  <MessageCircle className="h-4 w-4 text-blue-500" />
+                  <span className="tracking-wider uppercase text-[10px]">МОЙ ВКОНТАКТЕ</span>
                 </a>
                 <a
-                  href="https://wa.me"
+                  href="https://max.ru"
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-semibold py-3.5 px-4 rounded-xl border border-emerald-100/50 transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer"
+                  className="bg-amber-50 hover:bg-amber-100 text-amber-700 text-xs font-semibold py-3.5 px-4 rounded-xl border border-amber-100/50 transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer"
                 >
-                  <Phone className="h-4 w-4 text-emerald-500" />
-                  <span className="tracking-wider uppercase text-[10px]">НАПИСАТЬ В WA</span>
+                  <MessageSquare className="h-4 w-4 text-brand-gold-dark" />
+                  <span className="tracking-wider uppercase text-[10px]">МЕССЕНДЖЕР МАКС</span>
                 </a>
               </div>
 
