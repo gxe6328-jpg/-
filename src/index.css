@@ -1,20 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
+:root {
+  --brand-cream-light: #FBFBF9;
+  --brand-cream: #EAE7E0;
+  --brand-cream-dark: #D6D1C5;
+  --brand-gold-dark: #726753;
+  --brand-slate: #1A1A1A;
+  --brand-charcoal: #1A1A1A;
+  --brand-sage-light: #F0F2EE;
+  --brand-card-bg: #FFFFFF;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-cream-light: #0D0D0B;
+    --brand-cream: #181715;
+    --brand-cream-dark: #2F2D29;
+    --brand-gold-dark: #9F937E;
+    --brand-slate: #F2EFE9;
+    --brand-charcoal: #E5E2DB;
+    --brand-sage-light: #1E211D;
+    --brand-card-bg: #1B1A17;
+  }
+}
+
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
   
   /* Custom brand colors for the "Artistic Flair" professional therapist aesthetic */
-  --color-brand-cream-light: #FBFBF9;
-  --color-brand-cream: #EAE7E0;
-  --color-brand-cream-dark: #D6D1C5;
+  --color-brand-cream-light: var(--brand-cream-light);
+  --color-brand-cream: var(--brand-cream);
+  --color-brand-cream-dark: var(--brand-cream-dark);
   --color-brand-gold: #8B7E66;
-  --color-brand-gold-dark: #726753;
-  --color-brand-slate: #1A1A1A;
-  --color-brand-charcoal: #1A1A1A;
+  --color-brand-gold-dark: var(--brand-gold-dark);
+  --color-brand-slate: var(--brand-slate);
+  --color-brand-charcoal: var(--brand-charcoal);
   --color-brand-sage: #5F6B5E;
-  --color-brand-sage-light: #F0F2EE;
+  --color-brand-sage-light: var(--brand-sage-light);
+  --color-brand-card-bg: var(--brand-card-bg);
 }
 
 /* Base resets or style overrides */
@@ -22,6 +47,7 @@ body {
   background-color: var(--color-brand-cream-light);
   color: var(--color-brand-charcoal);
   font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Custom scrollbar for a premium feel */

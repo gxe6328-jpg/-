@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Plus, Minus, BookOpen, GraduationCap, Award, Briefcase, HelpCircle, HeartHandshake } from "lucide-react";
+import AnimatedToggleIcon from "./AnimatedToggleIcon";
 
 interface AccordionItem {
   id: string;
@@ -127,11 +128,11 @@ export default function Accordions() {
         return (
           <div
             key={item.id}
-            className="border border-brand-cream-dark/70 rounded-2xl bg-white overflow-hidden transition-all duration-300 hover:border-brand-gold/50 hover:shadow-sm"
+            className="border border-brand-cream-dark/70 rounded-2xl bg-brand-card-bg overflow-hidden transition-all duration-300 hover:border-brand-gold/50 hover:shadow-sm"
           >
             <button
               onClick={() => toggle(item.id)}
-              className="w-full flex items-center justify-between p-4 text-left transition-colors cursor-pointer select-none"
+              className="group w-full flex items-center justify-between p-4 text-left transition-colors cursor-pointer select-none"
               id={`accordion-btn-${item.id}`}
             >
               <div className="flex items-center gap-3">
@@ -140,8 +141,8 @@ export default function Accordions() {
                   {item.title}
                 </span>
               </div>
-              <div className="rounded-full bg-brand-cream-light p-1 text-brand-gold transition-transform duration-300">
-                {isOpen ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
+              <div className="rounded-full bg-brand-cream-dark/30 dark:bg-brand-cream-dark/60 p-1.5 text-brand-slate/50 dark:text-brand-slate/60 shrink-0 transition-all duration-300 group-hover:bg-brand-gold/20 group-hover:text-brand-gold flex items-center justify-center">
+                <AnimatedToggleIcon isOpen={isOpen} size="md" />
               </div>
             </button>
 

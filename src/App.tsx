@@ -9,12 +9,11 @@ import {
   ShieldCheck,
   Share2,
   Activity,
-  Plus,
-  Minus,
   MessageCircle,
   MessageSquare
 } from "lucide-react";
 import Accordions from "./components/Accordions";
+import AnimatedToggleIcon from "./components/AnimatedToggleIcon";
 
 import { pavelPortraitBase64 as pavelPortrait } from "./assets/images/pavel_photo_new_base64";
 
@@ -104,7 +103,7 @@ export default function App() {
             href="https://app2.sqns.ru/booking/booking?orgid=8780#/employees"
             target="_blank"
             rel="noreferrer"
-            className="w-full bg-white hover:bg-brand-gold/5 text-brand-slate py-4.5 px-5 rounded-2xl border-2 border-brand-gold hover:border-brand-gold-dark transition-all duration-300 shadow-md active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer relative overflow-hidden group"
+            className="w-full bg-brand-card-bg hover:bg-brand-gold/5 text-brand-slate py-4.5 px-5 rounded-2xl border-2 border-brand-gold hover:border-brand-gold-dark transition-all duration-300 shadow-md active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer relative overflow-hidden group"
           >
             <div className="absolute inset-0 w-1/2 h-full bg-brand-gold/10 -skew-x-12 -translate-x-full group-hover:translate-x-[250%] transition-transform duration-1000" />
             <span className="text-xs uppercase tracking-[0.15em] font-extrabold text-brand-slate flex items-center gap-1.5">
@@ -120,7 +119,7 @@ export default function App() {
             href="https://vk.com"
             target="_blank"
             rel="noreferrer"
-            className="w-full bg-white hover:bg-brand-cream-light/50 text-brand-slate font-sans py-4 px-6 rounded-2xl border border-brand-slate/20 hover:border-brand-slate transition-all duration-300 shadow-xs active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer"
+            className="w-full bg-brand-card-bg hover:bg-brand-cream-light/50 text-brand-slate font-sans py-4 px-6 rounded-2xl border border-brand-slate/20 hover:border-brand-slate transition-all duration-300 shadow-xs active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer"
           >
             <span className="text-xs uppercase tracking-[0.15em] font-bold text-brand-slate flex items-center gap-1.5">
               <MessageCircle className="h-3.5 w-3.5 text-blue-500" /> СВЯЗАТЬСЯ В ВКОНТАКТЕ
@@ -132,7 +131,7 @@ export default function App() {
             href="https://max.ru"
             target="_blank"
             rel="noreferrer"
-            className="w-full bg-white hover:bg-brand-cream-light/50 text-brand-slate font-sans py-4 px-6 rounded-2xl border border-brand-slate/20 hover:border-brand-slate transition-all duration-300 shadow-xs active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer"
+            className="w-full bg-brand-card-bg hover:bg-brand-cream-light/50 text-brand-slate font-sans py-4 px-6 rounded-2xl border border-brand-slate/20 hover:border-brand-slate transition-all duration-300 shadow-xs active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer"
           >
             <span className="text-xs uppercase tracking-[0.15em] font-bold text-brand-slate flex items-center gap-1.5">
               <MessageSquare className="h-3.5 w-3.5 text-brand-gold" /> МЕССЕНДЖЕР МАКС
@@ -164,7 +163,7 @@ export default function App() {
             </div>
           </div>
 
-          <div className="bg-white rounded-3xl border border-brand-cream-dark/60 shadow-xs divide-y divide-brand-cream-dark/40 overflow-hidden">
+          <div className="bg-brand-card-bg rounded-3xl border border-brand-cream-dark/60 shadow-xs divide-y divide-brand-cream-dark/40 overflow-hidden">
             {helpCategories.map((cat, idx) => {
               const isOpen = openHelpIdx === idx;
               return (
@@ -174,14 +173,14 @@ export default function App() {
                 >
                   <button
                     onClick={() => toggleHelp(idx)}
-                    className="w-full flex items-center justify-between p-4 text-left cursor-pointer select-none"
+                    className="group w-full flex items-center justify-between p-4 text-left cursor-pointer select-none"
                   >
                     <h4 className="font-serif font-bold text-brand-slate text-xs sm:text-sm flex items-center gap-2 pr-2">
                       <span className="h-1.5 w-1.5 bg-brand-gold rounded-full shrink-0" />
                       {cat.title}
                     </h4>
-                    <div className="rounded-full bg-brand-cream-light p-1 text-brand-gold shrink-0 transition-transform duration-300">
-                      {isOpen ? <Minus className="h-3 w-3" /> : <Plus className="h-3 w-3" />}
+                    <div className="rounded-full bg-brand-cream-dark/30 dark:bg-brand-cream-dark/60 p-1.5 text-brand-slate/50 dark:text-brand-slate/60 shrink-0 transition-all duration-300 group-hover:bg-brand-gold/20 group-hover:text-brand-gold flex items-center justify-center">
+                      <AnimatedToggleIcon isOpen={isOpen} />
                     </div>
                   </button>
                   <AnimatePresence initial={false}>
@@ -219,7 +218,7 @@ export default function App() {
         <div className="px-6 py-8 mt-10 border-t border-brand-cream-dark/40 space-y-6 bg-brand-cream-light/50 text-center">
           <button
             onClick={handleShare}
-            className="w-full py-3 bg-white hover:bg-brand-cream-light text-brand-slate/80 text-xs font-semibold rounded-xl border border-brand-cream-dark/50 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs"
+            className="w-full py-3 bg-brand-card-bg hover:bg-brand-cream-light text-brand-slate/80 text-xs font-semibold rounded-xl border border-brand-cream-dark/50 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs"
           >
             <Share2 className="h-4 w-4" />
             <span>{shared ? "Ссылка скопирована!" : "Поделиться визиткой"}</span>
@@ -238,7 +237,7 @@ export default function App() {
       <div className="hidden lg:flex flex-col min-h-screen">
         
         {/* Desktop Header */}
-        <header className="w-full bg-white/85 backdrop-blur-md border-b border-brand-cream-dark/60 sticky top-0 z-40 px-4 py-5">
+        <header className="w-full bg-brand-card-bg/85 backdrop-blur-md border-b border-brand-cream-dark/60 sticky top-0 z-40 px-4 py-5">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="h-10 w-10 bg-brand-slate text-brand-cream rounded-xl flex items-center justify-center font-serif text-xl font-bold border border-brand-gold/30 shadow-sm">
@@ -306,7 +305,7 @@ export default function App() {
 
             {/* Credentials Row */}
             <section className="grid grid-cols-3 gap-4">
-              <div className="bg-white p-5 rounded-2xl border border-brand-cream-dark/60 shadow-xs flex items-center gap-3.5 hover:border-brand-gold/40 transition-colors">
+              <div className="bg-brand-card-bg p-5 rounded-2xl border border-brand-cream-dark/60 shadow-xs flex items-center gap-3.5 hover:border-brand-gold/40 transition-colors">
                 <div className="p-2.5 bg-brand-cream/50 text-brand-gold rounded-xl">
                   <Award className="h-5 w-5" />
                 </div>
@@ -316,7 +315,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="bg-white p-5 rounded-2xl border border-brand-cream-dark/60 shadow-xs flex items-center gap-3.5 hover:border-brand-gold/40 transition-colors">
+              <div className="bg-brand-card-bg p-5 rounded-2xl border border-brand-cream-dark/60 shadow-xs flex items-center gap-3.5 hover:border-brand-gold/40 transition-colors">
                 <div className="p-2.5 bg-brand-cream/50 text-brand-gold rounded-xl">
                   <BookOpen className="h-5 w-5" />
                 </div>
@@ -326,7 +325,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="bg-white p-5 rounded-2xl border border-brand-cream-dark/60 shadow-xs flex items-center gap-3.5 hover:border-brand-gold/40 transition-colors">
+              <div className="bg-brand-card-bg p-5 rounded-2xl border border-brand-cream-dark/60 shadow-xs flex items-center gap-3.5 hover:border-brand-gold/40 transition-colors">
                 <div className="p-2.5 bg-brand-cream/50 text-brand-gold rounded-xl">
                   <ShieldCheck className="h-5 w-5" />
                 </div>
@@ -355,7 +354,7 @@ export default function App() {
                 </h3>
               </div>
               
-              <div className="bg-white rounded-3xl border border-brand-cream-dark/60 shadow-xs divide-y divide-brand-cream-dark/40 overflow-hidden">
+              <div className="bg-brand-card-bg rounded-3xl border border-brand-cream-dark/60 shadow-xs divide-y divide-brand-cream-dark/40 overflow-hidden">
                 {helpCategories.map((cat, idx) => {
                   const isOpen = openHelpIdx === idx;
                   return (
@@ -365,14 +364,14 @@ export default function App() {
                     >
                       <button
                         onClick={() => toggleHelp(idx)}
-                        className="w-full flex items-center justify-between p-4 text-left cursor-pointer select-none"
+                        className="group w-full flex items-center justify-between p-4 text-left cursor-pointer select-none"
                       >
                         <h4 className="font-serif font-bold text-brand-slate text-sm flex items-center gap-2.5 pr-2">
                           <span className="h-1.5 w-1.5 bg-brand-gold rounded-full shrink-0" />
                           {cat.title}
                         </h4>
-                        <div className="rounded-full bg-brand-cream-light p-1 text-brand-gold shrink-0 transition-transform duration-300">
-                          {isOpen ? <Minus className="h-3 w-3" /> : <Plus className="h-3 w-3" />}
+                        <div className="rounded-full bg-brand-cream-dark/30 dark:bg-brand-cream-dark/60 p-1.5 text-brand-slate/50 dark:text-brand-slate/60 shrink-0 transition-all duration-300 group-hover:bg-brand-gold/20 group-hover:text-brand-gold flex items-center justify-center">
+                          <AnimatedToggleIcon isOpen={isOpen} size="sm" />
                         </div>
                       </button>
                       <AnimatePresence initial={false}>
@@ -421,7 +420,7 @@ export default function App() {
             
             {/* Portrait Card (Scaled Down) */}
             <div className="flex justify-center">
-              <div className="relative w-56 h-56 bg-brand-cream rounded-full border-4 border-white shadow-lg overflow-hidden group">
+              <div className="relative w-56 h-56 bg-brand-cream rounded-full border-4 border-brand-card-bg shadow-lg overflow-hidden group">
                 <img
                   src={pavelPortrait}
                   alt="Врач-психотерапевт Веляев Павел Александрович"
@@ -432,7 +431,7 @@ export default function App() {
             </div>
 
             {/* Contact Panel */}
-            <div className="bg-white p-6 rounded-3xl border border-brand-cream-dark/60 shadow-sm space-y-4">
+            <div className="bg-brand-card-bg p-6 rounded-3xl border border-brand-cream-dark/60 shadow-sm space-y-4">
               <h4 className="font-serif text-lg font-bold text-brand-slate">
                 Контакты и запись на прием
               </h4>
@@ -441,7 +440,7 @@ export default function App() {
                 href="https://app2.sqns.ru/booking/booking?orgid=8780#/employees"
                 target="_blank"
                 rel="noreferrer"
-                className="w-full bg-white hover:bg-brand-gold/5 text-brand-slate py-4.5 px-6 rounded-2xl border-2 border-brand-gold hover:border-brand-gold-dark transition-all duration-300 shadow-md active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer group relative overflow-hidden"
+                className="w-full bg-brand-card-bg hover:bg-brand-gold/5 text-brand-slate py-4.5 px-6 rounded-2xl border-2 border-brand-gold hover:border-brand-gold-dark transition-all duration-300 shadow-md active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer group relative overflow-hidden"
               >
                 <div className="absolute inset-0 w-1/2 h-full bg-brand-gold/10 -skew-x-12 -translate-x-full group-hover:translate-x-[250%] transition-transform duration-1000" />
                 <span className="text-xs uppercase font-sans tracking-[0.15em] font-extrabold text-brand-slate">ЗАПИСАТЬСЯ НА ПРИЕМ</span>
@@ -453,7 +452,7 @@ export default function App() {
                   href="https://vk.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-semibold py-3.5 px-4 rounded-xl border border-blue-100/50 transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer"
+                  className="bg-blue-50 dark:bg-blue-950/30 hover:bg-blue-100 dark:hover:bg-blue-900/40 text-blue-700 dark:text-blue-300 text-xs font-semibold py-3.5 px-4 rounded-xl border border-blue-100/50 dark:border-blue-900/50 transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer"
                 >
                   <MessageCircle className="h-4 w-4 text-blue-500" />
                   <span className="tracking-wider uppercase text-[10px]">МОЙ ВКОНТАКТЕ</span>
@@ -462,7 +461,7 @@ export default function App() {
                   href="https://max.ru"
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-amber-50 hover:bg-amber-100 text-amber-700 text-xs font-semibold py-3.5 px-4 rounded-xl border border-amber-100/50 transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer"
+                  className="bg-amber-50 dark:bg-amber-950/30 hover:bg-amber-100 dark:hover:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-semibold py-3.5 px-4 rounded-xl border border-amber-100/50 dark:border-amber-900/50 transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer"
                 >
                   <MessageSquare className="h-4 w-4 text-brand-gold-dark" />
                   <span className="tracking-wider uppercase text-[10px]">МЕССЕНДЖЕР МАКС</span>
