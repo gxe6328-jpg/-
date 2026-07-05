@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import Accordions from "./components/Accordions";
 
-import pavelPortrait from "./assets/images/pavel_photo_new.jpeg";
+import { pavelPortraitBase64 as pavelPortrait } from "./assets/images/pavel_photo_new_base64";
 
 const helpCategories = [
   {
