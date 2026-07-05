@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+  
+  /* Custom brand colors for the "Artistic Flair" professional therapist aesthetic */
+  --color-brand-cream-light: #FBFBF9;
+  --color-brand-cream: #EAE7E0;
+  --color-brand-cream-dark: #D6D1C5;
+  --color-brand-gold: #8B7E66;
+  --color-brand-gold-dark: #726753;
+  --color-brand-slate: #1A1A1A;
+  --color-brand-charcoal: #1A1A1A;
+  --color-brand-sage: #5F6B5E;
+  --color-brand-sage-light: #F0F2EE;
+}
+
+/* Base resets or style overrides */
+body {
+  background-color: var(--color-brand-cream-light);
+  color: var(--color-brand-charcoal);
+  font-family: var(--font-sans);
+}
+
+/* Custom scrollbar for a premium feel */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-brand-cream-light);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-gold);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-gold-dark);
+}

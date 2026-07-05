@@ -1,0 +1,8 @@
+{
+  "name": "Психотерапевт Павел Веляев",
+  "description": "Персональный сайт-визитка психотерапевта Павла Александровича Веляева с возможностью записи, онлайн-тестами и информацией об услугах",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
