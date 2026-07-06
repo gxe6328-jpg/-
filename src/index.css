@@ -10,6 +10,9 @@
   --brand-charcoal: #1A1A1A;
   --brand-sage-light: #F0F2EE;
   --brand-card-bg: #FFFFFF;
+  --brand-btn-border: rgba(26, 26, 26, 0.15);
+  --brand-btn-border-hover: rgba(26, 26, 26, 0.35);
+  --brand-btn-hover-bg: rgba(214, 209, 197, 0.15);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,6 +25,9 @@
     --brand-charcoal: #E5E2DB;
     --brand-sage-light: #1E211D;
     --brand-card-bg: #1B1A17;
+    --brand-btn-border: rgba(242, 239, 233, 0.12);
+    --brand-btn-border-hover: rgba(139, 126, 102, 0.5);
+    --brand-btn-hover-bg: rgba(47, 45, 41, 0.25);
   }
 }
 
@@ -40,6 +46,9 @@
   --color-brand-sage: #5F6B5E;
   --color-brand-sage-light: var(--brand-sage-light);
   --color-brand-card-bg: var(--brand-card-bg);
+  --color-brand-btn-border: var(--brand-btn-border);
+  --color-brand-btn-border-hover: var(--brand-btn-border-hover);
+  --color-brand-btn-hover-bg: var(--brand-btn-hover-bg);
 }
 
 /* Base resets or style overrides */

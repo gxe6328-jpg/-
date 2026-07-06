@@ -110,7 +110,7 @@ export default function App() {
             href="https://app2.sqns.ru/booking/booking?orgid=8780#/employees"
             target="_blank"
             rel="noreferrer"
-            className="w-full bg-brand-card-bg hover:bg-brand-gold/5 text-brand-slate py-4.5 px-5 rounded-2xl border-2 border-brand-gold hover:border-brand-gold-dark transition-all duration-300 shadow-md active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer relative overflow-hidden group"
+            className="w-full bg-brand-card-bg hover:bg-brand-gold/5 text-brand-slate py-4.5 px-5 rounded-2xl border-2 border-brand-gold hover:border-brand-gold transition-all duration-300 shadow-md active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer relative overflow-hidden group"
           >
             <div className="absolute inset-0 w-1/2 h-full bg-brand-gold/10 -skew-x-12 -translate-x-full group-hover:translate-x-[250%] transition-transform duration-1000" />
             <span className="text-xs uppercase tracking-[0.15em] font-extrabold text-brand-slate flex items-center gap-1.5">
@@ -126,7 +126,7 @@ export default function App() {
             href="https://vk.com"
             target="_blank"
             rel="noreferrer"
-            className="w-full bg-brand-card-bg hover:bg-brand-cream-dark/20 dark:hover:bg-brand-cream-dark/10 text-brand-slate font-sans py-4 px-6 rounded-2xl border border-brand-slate/20 hover:border-brand-slate/40 dark:hover:border-brand-slate/20 transition-all duration-300 shadow-xs active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer"
+            className="w-full bg-brand-card-bg hover:bg-brand-btn-hover-bg text-brand-slate font-sans py-4 px-6 rounded-2xl border border-brand-btn-border hover:border-brand-btn-border-hover transition-all duration-300 shadow-xs active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer"
           >
             <span className="text-xs uppercase tracking-[0.15em] font-bold text-brand-slate flex items-center gap-1.5">
               <MessageCircle className="h-3.5 w-3.5 text-blue-500" /> СВЯЗАТЬСЯ В ВКОНТАКТЕ
@@ -138,7 +138,7 @@ export default function App() {
             href="https://max.ru"
             target="_blank"
             rel="noreferrer"
-            className="w-full bg-brand-card-bg hover:bg-brand-cream-dark/20 dark:hover:bg-brand-cream-dark/10 text-brand-slate font-sans py-4 px-6 rounded-2xl border border-brand-slate/20 hover:border-brand-slate/40 dark:hover:border-brand-slate/20 transition-all duration-300 shadow-xs active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer"
+            className="w-full bg-brand-card-bg hover:bg-brand-btn-hover-bg text-brand-slate font-sans py-4 px-6 rounded-2xl border border-brand-btn-border hover:border-brand-btn-border-hover transition-all duration-300 shadow-xs active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer"
           >
             <span className="text-xs uppercase tracking-[0.15em] font-bold text-brand-slate flex items-center gap-1.5">
               <MessageSquare className="h-3.5 w-3.5 text-brand-gold" /> МЕССЕНДЖЕР МАКС
@@ -182,7 +182,7 @@ export default function App() {
                     onClick={() => toggleHelp(idx)}
                     className="group w-full flex items-center justify-between p-4 text-left cursor-pointer select-none"
                   >
-                    <h4 className="font-serif font-bold text-brand-slate text-xs sm:text-sm flex items-center gap-2 pr-2">
+                    <h4 className="font-serif font-bold text-brand-slate text-sm sm:text-base flex items-center gap-2.5 pr-2">
                       <span className="h-1.5 w-1.5 bg-brand-gold rounded-full shrink-0" />
                       {cat.title}
                     </h4>
@@ -198,7 +198,7 @@ export default function App() {
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.25, ease: "easeInOut" }}
                       >
-                        <div className="px-4 pb-4 pt-1 bg-brand-cream-light/10 text-xs text-brand-slate/75 leading-relaxed">
+                        <div className="px-4 pb-4 pt-1.5 bg-brand-cream-light/10 text-[13px] sm:text-sm text-brand-slate/80 leading-relaxed font-medium">
                           {cat.desc}
                         </div>
                       </motion.div>
@@ -373,7 +373,7 @@ export default function App() {
                         onClick={() => toggleHelp(idx)}
                         className="group w-full flex items-center justify-between p-4 text-left cursor-pointer select-none"
                       >
-                        <h4 className="font-serif font-bold text-brand-slate text-sm flex items-center gap-2.5 pr-2">
+                        <h4 className="font-serif font-bold text-brand-slate text-base md:text-lg flex items-center gap-2.5 pr-2">
                           <span className="h-1.5 w-1.5 bg-brand-gold rounded-full shrink-0" />
                           {cat.title}
                         </h4>
@@ -389,7 +389,7 @@ export default function App() {
                             exit={{ height: 0, opacity: 0 }}
                             transition={{ duration: 0.25, ease: "easeInOut" }}
                           >
-                            <div className="px-6 pb-4 pt-1 bg-brand-cream-light/10 text-xs sm:text-sm text-brand-slate/75 leading-relaxed">
+                            <div className="px-6 pb-4 pt-1.5 bg-brand-cream-light/10 text-sm md:text-base text-brand-slate/80 leading-relaxed font-medium">
                               {cat.desc}
                             </div>
                           </motion.div>
@@ -447,7 +447,7 @@ export default function App() {
                 href="https://app2.sqns.ru/booking/booking?orgid=8780#/employees"
                 target="_blank"
                 rel="noreferrer"
-                className="w-full bg-brand-card-bg hover:bg-brand-gold/5 text-brand-slate py-4.5 px-6 rounded-2xl border-2 border-brand-gold hover:border-brand-gold-dark transition-all duration-300 shadow-md active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer group relative overflow-hidden"
+                className="w-full bg-brand-card-bg hover:bg-brand-gold/5 text-brand-slate py-4.5 px-6 rounded-2xl border-2 border-brand-gold hover:border-brand-gold transition-all duration-300 shadow-md active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer group relative overflow-hidden"
               >
                 <div className="absolute inset-0 w-1/2 h-full bg-brand-gold/10 -skew-x-12 -translate-x-full group-hover:translate-x-[250%] transition-transform duration-1000" />
                 <span className="text-xs uppercase font-sans tracking-[0.15em] font-extrabold text-brand-slate">ЗАПИСАТЬСЯ НА ПРИЕМ</span>
@@ -459,7 +459,7 @@ export default function App() {
                   href="https://vk.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-blue-50 dark:bg-blue-950/30 hover:bg-blue-100 dark:hover:bg-blue-900/40 text-blue-700 dark:text-blue-300 text-xs font-semibold py-3.5 px-4 rounded-xl border border-blue-100/50 dark:border-blue-900/50 transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer"
+                  className="bg-brand-card-bg hover:bg-brand-btn-hover-bg text-brand-slate text-xs font-semibold py-3.5 px-4 rounded-xl border border-brand-btn-border hover:border-brand-btn-border-hover transition-all duration-300 text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer"
                 >
                   <MessageCircle className="h-4 w-4 text-blue-500" />
                   <span className="tracking-wider uppercase text-[10px]">МОЙ ВКОНТАКТЕ</span>
@@ -468,7 +468,7 @@ export default function App() {
                   href="https://max.ru"
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-amber-50 dark:bg-amber-950/30 hover:bg-amber-100 dark:hover:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-semibold py-3.5 px-4 rounded-xl border border-amber-100/50 dark:border-amber-900/50 transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer"
+                  className="bg-brand-card-bg hover:bg-brand-btn-hover-bg text-brand-slate text-xs font-semibold py-3.5 px-4 rounded-xl border border-brand-btn-border hover:border-brand-btn-border-hover transition-all duration-300 text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer"
                 >
                   <MessageSquare className="h-4 w-4 text-brand-gold-dark" />
                   <span className="tracking-wider uppercase text-[10px]">МЕССЕНДЖЕР МАКС</span>
