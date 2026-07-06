@@ -126,7 +126,7 @@ export default function App() {
             href="https://vk.com"
             target="_blank"
             rel="noreferrer"
-            className="w-full bg-brand-card-bg hover:bg-brand-slate/5 text-brand-slate font-sans py-4 px-6 rounded-2xl border border-brand-slate/20 hover:border-brand-slate/40 transition-all duration-300 shadow-xs active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer"
+            className="w-full bg-brand-card-bg hover:bg-brand-cream-dark/20 dark:hover:bg-brand-cream-dark/10 text-brand-slate font-sans py-4 px-6 rounded-2xl border border-brand-slate/20 hover:border-brand-slate/40 dark:hover:border-brand-slate/20 transition-all duration-300 shadow-xs active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer"
           >
             <span className="text-xs uppercase tracking-[0.15em] font-bold text-brand-slate flex items-center gap-1.5">
               <MessageCircle className="h-3.5 w-3.5 text-blue-500" /> СВЯЗАТЬСЯ В ВКОНТАКТЕ
@@ -138,7 +138,7 @@ export default function App() {
             href="https://max.ru"
             target="_blank"
             rel="noreferrer"
-            className="w-full bg-brand-card-bg hover:bg-brand-slate/5 text-brand-slate font-sans py-4 px-6 rounded-2xl border border-brand-slate/20 hover:border-brand-slate/40 transition-all duration-300 shadow-xs active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer"
+            className="w-full bg-brand-card-bg hover:bg-brand-cream-dark/20 dark:hover:bg-brand-cream-dark/10 text-brand-slate font-sans py-4 px-6 rounded-2xl border border-brand-slate/20 hover:border-brand-slate/40 dark:hover:border-brand-slate/20 transition-all duration-300 shadow-xs active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer"
           >
             <span className="text-xs uppercase tracking-[0.15em] font-bold text-brand-slate flex items-center gap-1.5">
               <MessageSquare className="h-3.5 w-3.5 text-brand-gold" /> МЕССЕНДЖЕР МАКС
