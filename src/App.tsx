@@ -17,6 +17,8 @@ import AnimatedToggleIcon from "./components/AnimatedToggleIcon";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 
 import { pavelPortraitBase64 as pavelPortrait } from "./assets/images/pavel_photo_new_base64";
+import vkLogo from "./assets/images/icons8-vk-48.png";
+import maxLogo from "./assets/images/Max_logo_2025.png";
 
 const helpCategories = [
   {
@@ -128,8 +130,8 @@ export default function App() {
             rel="noreferrer"
             className="w-full bg-brand-card-bg hover:bg-brand-btn-hover-bg text-brand-slate font-sans py-4 px-6 rounded-2xl border border-brand-btn-border hover:border-brand-btn-border-hover transition-all duration-300 shadow-xs active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer"
           >
-            <span className="text-xs uppercase tracking-[0.15em] font-bold text-brand-slate flex items-center gap-1.5">
-              <MessageCircle className="h-3.5 w-3.5 text-blue-500" /> СВЯЗАТЬСЯ В ВКОНТАКТЕ
+            <span className="text-xs uppercase tracking-[0.15em] font-bold text-brand-slate flex items-center gap-2">
+              <img src={vkLogo} className="h-4.5 w-4.5 object-contain" alt="VK" /> СВЯЗАТЬСЯ В ВКОНТАКТЕ
             </span>
             <span className="text-[9px] text-brand-slate/50 mt-1 font-normal uppercase tracking-wider">Быстрый ответ и запись на консультацию</span>
           </a>
@@ -140,8 +142,8 @@ export default function App() {
             rel="noreferrer"
             className="w-full bg-brand-card-bg hover:bg-brand-btn-hover-bg text-brand-slate font-sans py-4 px-6 rounded-2xl border border-brand-btn-border hover:border-brand-btn-border-hover transition-all duration-300 shadow-xs active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer"
           >
-            <span className="text-xs uppercase tracking-[0.15em] font-bold text-brand-slate flex items-center gap-1.5">
-              <MessageSquare className="h-3.5 w-3.5 text-brand-gold" /> МЕССЕНДЖЕР МАКС
+            <span className="text-xs uppercase tracking-[0.15em] font-bold text-brand-slate flex items-center gap-2">
+              <img src={maxLogo} className="h-4.5 w-4.5 object-contain rounded-md" alt="Max" /> МЕССЕНДЖЕР МАКС
             </span>
             <span className="text-[9px] text-brand-slate/50 mt-1 font-normal uppercase tracking-wider">Для оперативной связи в чате</span>
           </a>
@@ -265,18 +267,18 @@ export default function App() {
                 href="https://vk.com"
                 target="_blank"
                 rel="noreferrer"
-                className="bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-semibold px-4 py-2.5 rounded-xl border border-blue-100/50 transition-all flex items-center gap-1.5 cursor-pointer"
+                className="bg-brand-card-bg hover:bg-brand-btn-hover-bg text-brand-slate text-xs font-semibold px-4 py-2.5 rounded-xl border border-brand-btn-border hover:border-brand-btn-border-hover transition-all duration-300 flex items-center gap-2 cursor-pointer"
               >
-                <MessageCircle className="h-3.5 w-3.5 text-blue-500" />
+                <img src={vkLogo} className="h-4.5 w-4.5 object-contain" alt="VK" />
                 <span>ВКонтакте</span>
               </a>
               <a
                 href="https://max.ru"
                 target="_blank"
                 rel="noreferrer"
-                className="bg-amber-50 hover:bg-amber-100 text-amber-700 text-xs font-semibold px-4 py-2.5 rounded-xl border border-amber-100/50 transition-all flex items-center gap-1.5 cursor-pointer"
+                className="bg-brand-card-bg hover:bg-brand-btn-hover-bg text-brand-slate text-xs font-semibold px-4 py-2.5 rounded-xl border border-brand-btn-border hover:border-brand-btn-border-hover transition-all duration-300 flex items-center gap-2 cursor-pointer"
               >
-                <MessageSquare className="h-3.5 w-3.5 text-brand-gold-dark" />
+                <img src={maxLogo} className="h-4.5 w-4.5 object-contain rounded-sm" alt="Max" />
                 <span>Мессенджер МАКС</span>
               </a>
             </div>
@@ -461,7 +463,7 @@ export default function App() {
                   rel="noreferrer"
                   className="bg-brand-card-bg hover:bg-brand-btn-hover-bg text-brand-slate text-xs font-semibold py-3.5 px-4 rounded-xl border border-brand-btn-border hover:border-brand-btn-border-hover transition-all duration-300 text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer"
                 >
-                  <MessageCircle className="h-4 w-4 text-blue-500" />
+                  <img src={vkLogo} className="h-5 w-5 object-contain" alt="VK" />
                   <span className="tracking-wider uppercase text-[10px]">МОЙ ВКОНТАКТЕ</span>
                 </a>
                 <a
@@ -470,7 +472,7 @@ export default function App() {
                   rel="noreferrer"
                   className="bg-brand-card-bg hover:bg-brand-btn-hover-bg text-brand-slate text-xs font-semibold py-3.5 px-4 rounded-xl border border-brand-btn-border hover:border-brand-btn-border-hover transition-all duration-300 text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer"
                 >
-                  <MessageSquare className="h-4 w-4 text-brand-gold-dark" />
+                  <img src={maxLogo} className="h-5 w-5 object-contain rounded-sm" alt="Max" />
                   <span className="tracking-wider uppercase text-[10px]">МЕССЕНДЖЕР МАКС</span>
                 </a>
               </div>
