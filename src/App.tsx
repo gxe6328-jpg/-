@@ -16,7 +16,7 @@ import Accordions from "./components/Accordions";
 import AnimatedToggleIcon from "./components/AnimatedToggleIcon";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 
-import { pavelPortraitBase64 as pavelPortrait } from "./assets/images/pavel_photo_new_base64";
+import pavelPortrait from "./assets/images/pavel_photo_latest.jpg";
 import vkLogo from "./assets/images/icons8-vk-48.png";
 import maxLogo from "./assets/images/Max_logo_2025.png";
 
@@ -112,7 +112,7 @@ export default function App() {
               src={pavelPortrait}
               alt="Врач-психотерапевт Веляев Павел Александрович"
               referrerPolicy="no-referrer"
-              className="absolute inset-0 h-full w-full object-cover object-top filter contrast-[1.02] brightness-[0.98]"
+              className="absolute inset-0 h-full w-full object-cover object-[center_62%] scale-[1.3] filter contrast-[1.02] brightness-[0.98]"
             />
           </div>
         </div>
@@ -465,7 +465,7 @@ export default function App() {
                   src={pavelPortrait}
                   alt="Врач-психотерапевт Веляев Павел Александрович"
                   referrerPolicy="no-referrer"
-                  className="absolute inset-0 h-full w-full object-cover object-top filter contrast-[1.02] brightness-[0.98] group-hover:scale-105 transition-transform duration-700"
+                  className="absolute inset-0 h-full w-full object-cover object-[center_62%] scale-[1.3] filter contrast-[1.02] brightness-[0.98] group-hover:scale-[1.38] transition-transform duration-700"
                 />
               </div>
             </div>
