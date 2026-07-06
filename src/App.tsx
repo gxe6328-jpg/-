@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import Accordions from "./components/Accordions";
 import AnimatedToggleIcon from "./components/AnimatedToggleIcon";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 
 import { pavelPortraitBase64 as pavelPortrait } from "./assets/images/pavel_photo_new_base64";
 
@@ -67,7 +68,13 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-brand-cream-light text-brand-charcoal selection:bg-brand-gold/30 selection:text-brand-slate flex flex-col font-sans">
+    <div className="min-h-screen bg-brand-cream-light text-brand-charcoal selection:bg-brand-gold/30 selection:text-brand-slate flex flex-col font-sans overflow-x-hidden">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="flex flex-col flex-1"
+      >
       
       {/* ========================================================== */}
       {/* MOBILE & TABLET LAYOUT (Screens under lg)                  */}
@@ -529,6 +536,8 @@ export default function App() {
 
       </div>
 
+      </motion.div>
+      <ScrollToTopButton />
     </div>
   );
 }
