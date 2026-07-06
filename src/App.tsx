@@ -47,6 +47,26 @@ const helpCategories = [
   }
 ];
 
+interface ScrollAnimateProps {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+}
+
+const ScrollAnimate: React.FC<ScrollAnimateProps> = ({ children, className = "", delay = 0 }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.65, ease: [0.215, 0.61, 0.355, 1], delay }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
 export default function App() {
   const [shared, setShared] = useState(false);
   const [openHelpIdx, setOpenHelpIdx] = useState<number | null>(null);
@@ -124,7 +144,7 @@ export default function App() {
         </div>
 
         {/* Contact Actions styled like the mockup (white background, thin border, subtext) */}
-        <div className="px-6 space-y-3 mt-4">
+        <ScrollAnimate className="px-6 space-y-3 mt-4">
           <a
             href="https://vk.com"
             target="_blank"
@@ -148,7 +168,7 @@ export default function App() {
             </span>
             <span className="text-[9px] text-brand-slate/50 mt-1 font-normal uppercase tracking-wider">Для оперативной связи в чате</span>
           </a>
-        </div>
+        </ScrollAnimate>
 
         {/* Heart Rate / ECG divider matching image */}
         <div className="flex items-center gap-4 px-6 py-6">
@@ -161,56 +181,58 @@ export default function App() {
 
         {/* Accordions and Information list */}
         <div className="px-6 space-y-6 flex-1">
-          <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-brand-cream/50 text-brand-gold rounded-xl">
-              <ShieldCheck className="h-5 w-5" />
+          <ScrollAnimate className="space-y-6">
+            <div className="flex items-center gap-3">
+              <div className="p-2.5 bg-brand-cream/50 text-brand-gold rounded-xl">
+                <ShieldCheck className="h-5 w-5" />
+              </div>
+              <div>
+                <h3 className="font-serif text-lg font-bold text-brand-slate">
+                  Кому и с чем я помогу
+                </h3>
+                <p className="text-[9px] text-brand-slate/45 uppercase tracking-wider">Профессиональная помощь</p>
+              </div>
             </div>
-            <div>
-              <h3 className="font-serif text-lg font-bold text-brand-slate">
-                Кому и с чем я помогу
-              </h3>
-              <p className="text-[9px] text-brand-slate/45 uppercase tracking-wider">Профессиональная помощь</p>
-            </div>
-          </div>
 
-          <div className="bg-brand-card-bg rounded-3xl border border-brand-cream-dark/60 shadow-xs divide-y divide-brand-cream-dark/40 overflow-hidden">
-            {helpCategories.map((cat, idx) => {
-              const isOpen = openHelpIdx === idx;
-              return (
-                <div
-                  key={idx}
-                  className="transition-colors duration-300 hover:bg-brand-cream-light/20"
-                >
-                  <button
-                    onClick={() => toggleHelp(idx)}
-                    className="group w-full flex items-center justify-between p-4 text-left cursor-pointer select-none"
+            <div className="bg-brand-card-bg rounded-3xl border border-brand-cream-dark/60 shadow-xs divide-y divide-brand-cream-dark/40 overflow-hidden">
+              {helpCategories.map((cat, idx) => {
+                const isOpen = openHelpIdx === idx;
+                return (
+                  <div
+                    key={idx}
+                    className="transition-colors duration-300 hover:bg-brand-cream-light/20"
                   >
-                    <h4 className="font-serif font-bold text-brand-slate text-sm sm:text-base flex items-center gap-2.5 pr-2">
-                      <span className="h-1.5 w-1.5 bg-brand-gold rounded-full shrink-0" />
-                      {cat.title}
-                    </h4>
-                    <div className="rounded-full bg-brand-cream-dark/30 dark:bg-brand-cream-dark/60 p-1.5 text-brand-slate/50 dark:text-brand-slate/60 shrink-0 transition-all duration-300 group-hover:bg-brand-gold/20 group-hover:text-brand-gold flex items-center justify-center">
-                      <AnimatedToggleIcon isOpen={isOpen} />
-                    </div>
-                  </button>
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.25, ease: "easeInOut" }}
-                      >
-                        <div className="px-4 pb-4 pt-1.5 bg-brand-cream-light/10 text-[13px] sm:text-sm text-brand-slate/80 leading-relaxed font-medium">
-                          {cat.desc}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
-          </div>
+                    <button
+                      onClick={() => toggleHelp(idx)}
+                      className="group w-full flex items-center justify-between p-4 text-left cursor-pointer select-none"
+                    >
+                      <h4 className="font-serif font-bold text-brand-slate text-sm sm:text-base flex items-center gap-2.5 pr-2">
+                        <span className="h-1.5 w-1.5 bg-brand-gold rounded-full shrink-0" />
+                        {cat.title}
+                      </h4>
+                      <div className="rounded-full bg-brand-cream-dark/30 dark:bg-brand-cream-dark/60 p-1.5 text-brand-slate/50 dark:text-brand-slate/60 shrink-0 transition-all duration-300 group-hover:bg-brand-gold/20 group-hover:text-brand-gold flex items-center justify-center">
+                        <AnimatedToggleIcon isOpen={isOpen} />
+                      </div>
+                    </button>
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.25, ease: "easeInOut" }}
+                        >
+                          <div className="px-4 pb-4 pt-1.5 bg-brand-cream-light/10 text-[13px] sm:text-sm text-brand-slate/80 leading-relaxed font-medium">
+                            {cat.desc}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </div>
+          </ScrollAnimate>
 
           {/* Heart Rate / ECG divider */}
           <div className="flex items-center gap-4 py-2">
@@ -221,7 +243,9 @@ export default function App() {
             <div className="h-[1px] flex-1 bg-brand-cream-dark/50" />
           </div>
 
-          <Accordions />
+          <ScrollAnimate>
+            <Accordions />
+          </ScrollAnimate>
         </div>
 
         {/* Mobile footer with sharing and disclaimer */}
@@ -314,37 +338,39 @@ export default function App() {
             </section>
 
             {/* Credentials Row */}
-            <section className="grid grid-cols-3 gap-4">
-              <div className="bg-brand-card-bg p-5 rounded-2xl border border-brand-cream-dark/60 shadow-xs flex items-center gap-3.5 hover:border-brand-gold/40 transition-colors">
-                <div className="p-2.5 bg-brand-cream/50 text-brand-gold rounded-xl">
-                  <Award className="h-5 w-5" />
+            <ScrollAnimate delay={0.1}>
+              <section className="grid grid-cols-3 gap-4">
+                <div className="bg-brand-card-bg p-5 rounded-2xl border border-brand-cream-dark/60 shadow-xs flex items-center gap-3.5 hover:border-brand-gold/40 transition-colors">
+                  <div className="p-2.5 bg-brand-cream/50 text-brand-gold rounded-xl">
+                    <Award className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <span className="block font-bold text-lg text-brand-slate leading-none">14+ лет</span>
+                    <span className="text-xs text-brand-slate/60 font-medium">Практики</span>
+                  </div>
                 </div>
-                <div>
-                  <span className="block font-bold text-lg text-brand-slate leading-none">14+ лет</span>
-                  <span className="text-xs text-brand-slate/60 font-medium">Практики</span>
-                </div>
-              </div>
 
-              <div className="bg-brand-card-bg p-5 rounded-2xl border border-brand-cream-dark/60 shadow-xs flex items-center gap-3.5 hover:border-brand-gold/40 transition-colors">
-                <div className="p-2.5 bg-brand-cream/50 text-brand-gold rounded-xl">
-                  <BookOpen className="h-5 w-5" />
+                <div className="bg-brand-card-bg p-5 rounded-2xl border border-brand-cream-dark/60 shadow-xs flex items-center gap-3.5 hover:border-brand-gold/40 transition-colors">
+                  <div className="p-2.5 bg-brand-cream/50 text-brand-gold rounded-xl">
+                    <BookOpen className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <span className="block font-bold text-lg text-brand-slate leading-none">I Категория</span>
+                    <span className="text-xs text-brand-slate/60 font-medium">Квалификация</span>
+                  </div>
                 </div>
-                <div>
-                  <span className="block font-bold text-lg text-brand-slate leading-none">I Категория</span>
-                  <span className="text-xs text-brand-slate/60 font-medium">Квалификация</span>
-                </div>
-              </div>
 
-              <div className="bg-brand-card-bg p-5 rounded-2xl border border-brand-cream-dark/60 shadow-xs flex items-center gap-3.5 hover:border-brand-gold/40 transition-colors">
-                <div className="p-2.5 bg-brand-cream/50 text-brand-gold rounded-xl">
-                  <ShieldCheck className="h-5 w-5" />
+                <div className="bg-brand-card-bg p-5 rounded-2xl border border-brand-cream-dark/60 shadow-xs flex items-center gap-3.5 hover:border-brand-gold/40 transition-colors">
+                  <div className="p-2.5 bg-brand-cream/50 text-brand-gold rounded-xl">
+                    <ShieldCheck className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <span className="block font-bold text-lg text-brand-slate leading-none">100%</span>
+                    <span className="text-xs text-brand-slate/60 font-medium">Конфиденциально</span>
+                  </div>
                 </div>
-                <div>
-                  <span className="block font-bold text-lg text-brand-slate leading-none">100%</span>
-                  <span className="text-xs text-brand-slate/60 font-medium">Конфиденциально</span>
-                </div>
-              </div>
-            </section>
+              </section>
+            </ScrollAnimate>
 
             {/* Divider with Heart Rate Line */}
             <div className="flex items-center gap-4 py-3">
@@ -356,53 +382,55 @@ export default function App() {
             </div>
 
             {/* Who and How section */}
-            <section className="space-y-4">
-              <div className="flex items-center gap-2">
-                <div className="h-2 w-2 bg-brand-gold rounded-full" />
-                <h3 className="font-serif text-xl font-bold text-brand-slate">
-                  Кому и с чем я помогу
-                </h3>
-              </div>
-              
-              <div className="bg-brand-card-bg rounded-3xl border border-brand-cream-dark/60 shadow-xs divide-y divide-brand-cream-dark/40 overflow-hidden">
-                {helpCategories.map((cat, idx) => {
-                  const isOpen = openHelpIdx === idx;
-                  return (
-                    <div
-                      key={idx}
-                      className="transition-colors duration-300 hover:bg-brand-cream-light/20"
-                    >
-                      <button
-                        onClick={() => toggleHelp(idx)}
-                        className="group w-full flex items-center justify-between p-4 text-left cursor-pointer select-none"
+            <ScrollAnimate className="space-y-4">
+              <section className="space-y-4">
+                <div className="flex items-center gap-2">
+                  <div className="h-2 w-2 bg-brand-gold rounded-full" />
+                  <h3 className="font-serif text-xl font-bold text-brand-slate">
+                    Кому и с чем я помогу
+                  </h3>
+                </div>
+                
+                <div className="bg-brand-card-bg rounded-3xl border border-brand-cream-dark/60 shadow-xs divide-y divide-brand-cream-dark/40 overflow-hidden">
+                  {helpCategories.map((cat, idx) => {
+                    const isOpen = openHelpIdx === idx;
+                    return (
+                      <div
+                        key={idx}
+                        className="transition-colors duration-300 hover:bg-brand-cream-light/20"
                       >
-                        <h4 className="font-serif font-bold text-brand-slate text-base md:text-lg flex items-center gap-2.5 pr-2">
-                          <span className="h-1.5 w-1.5 bg-brand-gold rounded-full shrink-0" />
-                          {cat.title}
-                        </h4>
-                        <div className="rounded-full bg-brand-cream-dark/30 dark:bg-brand-cream-dark/60 p-1.5 text-brand-slate/50 dark:text-brand-slate/60 shrink-0 transition-all duration-300 group-hover:bg-brand-gold/20 group-hover:text-brand-gold flex items-center justify-center">
-                          <AnimatedToggleIcon isOpen={isOpen} size="sm" />
-                        </div>
-                      </button>
-                      <AnimatePresence initial={false}>
-                        {isOpen && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.25, ease: "easeInOut" }}
-                          >
-                            <div className="px-6 pb-4 pt-1.5 bg-brand-cream-light/10 text-sm md:text-base text-brand-slate/80 leading-relaxed font-medium">
-                              {cat.desc}
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  );
-                })}
-              </div>
-            </section>
+                        <button
+                          onClick={() => toggleHelp(idx)}
+                          className="group w-full flex items-center justify-between p-4 text-left cursor-pointer select-none"
+                        >
+                          <h4 className="font-serif font-bold text-brand-slate text-base md:text-lg flex items-center gap-2.5 pr-2">
+                            <span className="h-1.5 w-1.5 bg-brand-gold rounded-full shrink-0" />
+                            {cat.title}
+                          </h4>
+                          <div className="rounded-full bg-brand-cream-dark/30 dark:bg-brand-cream-dark/60 p-1.5 text-brand-slate/50 dark:text-brand-slate/60 shrink-0 transition-all duration-300 group-hover:bg-brand-gold/20 group-hover:text-brand-gold flex items-center justify-center">
+                            <AnimatedToggleIcon isOpen={isOpen} size="sm" />
+                          </div>
+                        </button>
+                        <AnimatePresence initial={false}>
+                          {isOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.25, ease: "easeInOut" }}
+                            >
+                              <div className="px-6 pb-4 pt-1.5 bg-brand-cream-light/10 text-sm md:text-base text-brand-slate/80 leading-relaxed font-medium">
+                                {cat.desc}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  })}
+                </div>
+              </section>
+            </ScrollAnimate>
 
             {/* Divider with Heart Rate Line */}
             <div className="flex items-center gap-4 py-3">
@@ -414,15 +442,17 @@ export default function App() {
             </div>
 
             {/* Accordions */}
-            <section className="space-y-4">
-              <div className="flex items-center gap-2">
-                <div className="h-2 w-2 bg-brand-gold rounded-full" />
-                <h3 className="font-serif text-xl font-bold text-brand-slate">
-                  Информация о специалисте
-                </h3>
-              </div>
-              <Accordions />
-            </section>
+            <ScrollAnimate className="space-y-4">
+              <section className="space-y-4">
+                <div className="flex items-center gap-2">
+                  <div className="h-2 w-2 bg-brand-gold rounded-full" />
+                  <h3 className="font-serif text-xl font-bold text-brand-slate">
+                    Информация о специалисте
+                  </h3>
+                </div>
+                <Accordions />
+              </section>
+            </ScrollAnimate>
           </div>
 
           {/* Right Column (5 cols, Sticky) */}
