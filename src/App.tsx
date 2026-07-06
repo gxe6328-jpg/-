@@ -93,7 +93,7 @@ export default function App() {
             Веляев Павел Александрович
           </h2>
           <p className="text-xs text-brand-slate/65 leading-relaxed font-medium">
-            Врач-психиатр, психиатр-нарколог I категории, психотерапевт
+            Врач-психиатр I категории, психиатр-нарколог, психотерапевт
           </p>
         </div>
 
@@ -493,7 +493,7 @@ export default function App() {
                 <span className="font-serif font-bold text-lg">Павел Веляев</span>
               </div>
               <p className="text-xs text-brand-cream-dark/70 max-w-sm leading-relaxed">
-                Дипломированный врач-психиатр, психиатр-нарколог I категории, психотерапевт. Профессиональная индивидуальная и семейная помощь.
+                Дипломированный врач-психиатр I категории, психиатр-нарколог, психотерапевт. Профессиональная индивидуальная и семейная помощь.
               </p>
             </div>
 
