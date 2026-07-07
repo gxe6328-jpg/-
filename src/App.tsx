@@ -146,7 +146,7 @@ export default function App() {
         {/* Contact Actions styled like the mockup (white background, thin border, subtext) */}
         <ScrollAnimate className="px-6 space-y-3 mt-4">
           <a
-            href="https://vk.com"
+            href="https://vk.ru/good_psihika"
             target="_blank"
             rel="noreferrer"
             className="w-full bg-brand-card-bg hover:bg-brand-btn-hover-bg text-brand-slate font-sans py-4 px-6 rounded-2xl border border-brand-btn-border hover:border-brand-btn-border-hover transition-all duration-300 shadow-xs active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer"
@@ -289,7 +289,7 @@ export default function App() {
 
             <div className="flex items-center gap-2.5">
               <a
-                href="https://vk.com"
+                href="https://vk.ru/good_psihika"
                 target="_blank"
                 rel="noreferrer"
                 className="bg-brand-card-bg hover:bg-brand-btn-hover-bg text-brand-slate text-xs font-semibold px-4 py-2.5 rounded-xl border border-brand-btn-border hover:border-brand-btn-border-hover transition-all duration-300 flex items-center gap-2 cursor-pointer"
@@ -489,7 +489,7 @@ export default function App() {
 
               <div className="grid grid-cols-2 gap-3">
                 <a
-                  href="https://vk.com"
+                  href="https://vk.ru/good_psihika"
                   target="_blank"
                   rel="noreferrer"
                   className="bg-brand-card-bg hover:bg-brand-btn-hover-bg text-brand-slate text-xs font-semibold py-3.5 px-4 rounded-xl border border-brand-btn-border hover:border-brand-btn-border-hover transition-all duration-300 text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer"
