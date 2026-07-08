@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
-  Phone,
   Award,
   BookOpen,
   MapPin,
@@ -10,7 +9,10 @@ import {
   Share2,
   Activity,
   MessageCircle,
-  MessageSquare
+  MessageSquare,
+  X,
+  ZoomIn,
+  ZoomOut
 } from "lucide-react";
 import Accordions from "./components/Accordions";
 import AnimatedToggleIcon from "./components/AnimatedToggleIcon";
@@ -70,6 +72,8 @@ const ScrollAnimate: React.FC<ScrollAnimateProps> = ({ children, className = "",
 export default function App() {
   const [shared, setShared] = useState(false);
   const [openHelpIdx, setOpenHelpIdx] = useState<number | null>(null);
+  const [isImageOpen, setIsImageOpen] = useState(false);
+  const [zoomLevel, setZoomLevel] = useState(1);
 
   const toggleHelp = (idx: number) => {
     setOpenHelpIdx(openHelpIdx === idx ? null : idx);
@@ -107,14 +111,25 @@ export default function App() {
         
         {/* Top Portrait Image centered and scaled down */}
         <div className="flex justify-center pt-8 pb-4">
-          <div className="relative w-40 h-40 rounded-full border-4 border-white shadow-md overflow-hidden bg-brand-cream shrink-0">
+          <button
+            onClick={() => {
+              setIsImageOpen(true);
+              setZoomLevel(1);
+            }}
+            aria-label="Просмотреть фото врача"
+            className="relative w-40 h-40 rounded-full border-4 border-white shadow-md overflow-hidden bg-brand-cream shrink-0 cursor-pointer group hover:shadow-lg hover:scale-[1.02] active:scale-95 transition-all duration-300 focus:outline-hidden focus:ring-2 focus:ring-brand-gold"
+          >
             <img
               src={pavelPortrait}
               alt="Врач-психотерапевт Веляев Павел Александрович"
               referrerPolicy="no-referrer"
-              className="absolute inset-0 h-full w-full object-cover object-[center_62%] scale-[1.3] filter contrast-[1.02] brightness-[0.98]"
+              className="absolute inset-0 h-full w-full object-cover object-[center_62%] scale-[1.3] filter contrast-[1.02] brightness-[0.98] group-hover:scale-[1.35] transition-transform duration-500"
             />
-          </div>
+            {/* Visual indicator on hover */}
+            <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <ZoomIn className="h-6 w-6 text-white drop-shadow-md" />
+            </div>
+          </button>
         </div>
 
         {/* Doctor Identity & Status */}
@@ -245,6 +260,50 @@ export default function App() {
 
           <ScrollAnimate>
             <Accordions />
+          </ScrollAnimate>
+
+          {/* Heart Rate / ECG divider */}
+          <div className="flex items-center gap-4 py-2">
+            <div className="h-[1px] flex-1 bg-brand-cream-dark/50" />
+            <div className="text-brand-gold shrink-0">
+              <Activity className="h-4 w-4" />
+            </div>
+            <div className="h-[1px] flex-1 bg-brand-cream-dark/50" />
+          </div>
+
+          {/* Contacts and Locations section on mobile */}
+          <ScrollAnimate className="space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="p-2.5 bg-brand-cream/50 text-brand-gold rounded-xl">
+                <MapPin className="h-5 w-5" />
+              </div>
+              <div>
+                <h3 className="font-serif text-lg font-bold text-brand-slate">
+                  Контакты и адреса
+                </h3>
+                <p className="text-[9px] text-brand-slate/45 uppercase tracking-wider">Прием и консультации</p>
+              </div>
+            </div>
+
+            <div className="bg-brand-card-bg p-5 rounded-3xl border border-brand-cream-dark/60 shadow-xs space-y-4 text-left">
+              <div className="space-y-3.5">
+                <div className="flex gap-3 text-xs text-brand-slate/85">
+                  <MapPin className="h-4.5 w-4.5 text-brand-gold shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-bold text-brand-slate block">Алексин:</span>
+                    <span className="text-brand-slate/75">ГУЗ «ТОКПБ№1 им. Н.П. Каменева» (филиал)</span>
+                  </div>
+                </div>
+
+                <div className="flex gap-3 text-xs text-brand-slate/85">
+                  <MapPin className="h-4.5 w-4.5 text-brand-gold shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-bold text-brand-slate block">Тула:</span>
+                    <span className="text-brand-slate/75">ГУЗ «ТОКПБ№1 им. Н.П. Каменева» / ГУЗ «ТГКБСМП им. Д.Я. Ваныкина»</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </ScrollAnimate>
         </div>
 
@@ -460,14 +519,25 @@ export default function App() {
             
             {/* Portrait Card (Scaled Down) */}
             <div className="flex justify-center">
-              <div className="relative w-56 h-56 bg-brand-cream rounded-full border-4 border-brand-card-bg shadow-lg overflow-hidden group">
+              <button
+                onClick={() => {
+                  setIsImageOpen(true);
+                  setZoomLevel(1);
+                }}
+                aria-label="Просмотреть фото врача"
+                className="relative w-56 h-56 bg-brand-cream rounded-full border-4 border-brand-card-bg shadow-lg overflow-hidden group cursor-pointer hover:shadow-xl hover:scale-[1.02] active:scale-95 transition-all duration-300 focus:outline-hidden focus:ring-2 focus:ring-brand-gold"
+              >
                 <img
                   src={pavelPortrait}
                   alt="Врач-психотерапевт Веляев Павел Александрович"
                   referrerPolicy="no-referrer"
                   className="absolute inset-0 h-full w-full object-cover object-[center_62%] scale-[1.3] filter contrast-[1.02] brightness-[0.98] group-hover:scale-[1.38] transition-transform duration-700"
                 />
-              </div>
+                {/* Visual indicator on hover */}
+                <div className="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <ZoomIn className="h-8 w-8 text-white drop-shadow-md" />
+                </div>
+              </button>
             </div>
 
             {/* Contact Panel */}
@@ -540,17 +610,13 @@ export default function App() {
             <div className="space-y-3 text-xs">
               <h4 className="font-serif font-bold text-brand-gold uppercase tracking-wider">Контакты и кабинеты</h4>
               <div className="space-y-2 text-brand-cream-dark/80">
-                <div className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4 text-brand-gold" />
+                <div className="flex items-start gap-2">
+                  <MapPin className="h-4 w-4 text-brand-gold shrink-0 mt-0.5" />
                   <span>Алексин: ГУЗ «ТОКПБ№1 им. Н.П. Каменева» (филиал)</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4 text-brand-gold" />
+                <div className="flex items-start gap-2">
+                  <MapPin className="h-4 w-4 text-brand-gold shrink-0 mt-0.5" />
                   <span>Тула: ГУЗ «ТОКПБ№1 им. Н.П. Каменева» / ГУЗ «ТГКБСМП им. Д.Я. Ваныкина»</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Phone className="h-4 w-4 text-brand-gold" />
-                  <span>+7 (999) 111-22-33</span>
                 </div>
               </div>
             </div>
@@ -571,6 +637,90 @@ export default function App() {
 
       </motion.div>
       <ScrollToTopButton />
+
+      {/* Lightbox / Modal for Doctor Portrait */}
+      <AnimatePresence>
+        {isImageOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-black/95 p-4 backdrop-blur-md select-none"
+            onClick={() => {
+              setIsImageOpen(false);
+              setZoomLevel(1);
+            }}
+          >
+            {/* Modal Controls */}
+            <div 
+              className="absolute top-4 right-4 flex items-center gap-2.5 z-[210]"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setZoomLevel(prev => Math.min(3, prev + 0.5))}
+                disabled={zoomLevel >= 3}
+                className="p-3 bg-white/10 hover:bg-white/20 active:scale-95 text-white rounded-full transition-all duration-200 disabled:opacity-30 cursor-pointer"
+                title="Приблизить"
+              >
+                <ZoomIn className="h-5 w-5" />
+              </button>
+              <button
+                onClick={() => setZoomLevel(prev => Math.max(1, prev - 0.5))}
+                disabled={zoomLevel <= 1}
+                className="p-3 bg-white/10 hover:bg-white/20 active:scale-95 text-white rounded-full transition-all duration-200 disabled:opacity-30 cursor-pointer"
+                title="Отдалить"
+              >
+                <ZoomOut className="h-5 w-5" />
+              </button>
+              <button
+                onClick={() => {
+                  setIsImageOpen(false);
+                  setZoomLevel(1);
+                }}
+                className="p-3 bg-white/15 hover:bg-white/25 active:scale-95 text-white rounded-full transition-all duration-200 cursor-pointer"
+                title="Закрыть"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            {/* Main Image Container */}
+            <motion.div
+              initial={{ scale: 0.95, y: 15 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 15 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative max-w-full max-h-[80vh] overflow-hidden rounded-2xl flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <motion.div
+                drag={zoomLevel > 1}
+                dragConstraints={{ left: -150, right: 150, top: -150, bottom: 150 }}
+                dragElastic={0.1}
+                className={zoomLevel > 1 ? "cursor-grab active:cursor-grabbing" : ""}
+              >
+                <motion.img
+                  src={pavelPortrait}
+                  alt="Врач-психотерапевт Веляев Павел Александрович"
+                  animate={{ scale: zoomLevel }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
+                  className="max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl max-h-[70vh] object-contain rounded-xl shadow-2xl cursor-zoom-in"
+                  onClick={() => {
+                    // Toggle zoom on click
+                    setZoomLevel(prev => prev === 1 ? 2 : 1);
+                  }}
+                />
+              </motion.div>
+            </motion.div>
+
+            {/* Instruction Footer */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/60 text-xs font-sans tracking-wide bg-white/10 border border-white/5 px-5 py-2.5 rounded-full backdrop-blur-md text-center pointer-events-none">
+              {zoomLevel > 1 ? "Перетаскивайте изображение или нажмите, чтобы уменьшить" : "Нажмите на изображение, чтобы приблизить"}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
