@@ -14,13 +14,12 @@ export default function AnimatedToggleIcon({ isOpen, size = "sm" }: AnimatedTogg
       {/* Horizontal line (always present, forms the minus) */}
       <div className={`absolute ${lineSize} bg-current rounded-full`} />
       
-      {/* Vertical line (shrinks/grows and rotates to create smooth toggle) */}
+      {/* Vertical line (shrinks/grows to create smooth toggle) */}
       <motion.div
         className={`absolute ${vertSize} bg-current rounded-full`}
         initial={false}
         animate={{ 
           scaleY: isOpen ? 0 : 1, 
-          rotate: isOpen ? 90 : 0 
         }}
         transition={{ 
           type: "spring",

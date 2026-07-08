@@ -14,7 +14,8 @@ import {
   ZoomIn,
   ZoomOut,
   Sun,
-  Moon
+  Moon,
+  ChevronDown
 } from "lucide-react";
 import Accordions from "./components/Accordions";
 import AnimatedToggleIcon from "./components/AnimatedToggleIcon";
@@ -134,6 +135,19 @@ export default function App() {
     if (saved === "light" || saved === "dark") return saved;
     return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
   });
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setHasScrolled(true);
+      } else {
+        setHasScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     if (theme === "dark") {
@@ -707,6 +721,28 @@ export default function App() {
 
       </motion.div>
       <ScrollToTopButton />
+
+      {/* Scroll Indicator Arrow */}
+      <AnimatePresence>
+        {!hasScrolled && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10, transition: { duration: 0.3 } }}
+            transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[45] flex flex-col items-center gap-1.5 pointer-events-none"
+          >
+            <span className="text-[9px] uppercase tracking-[0.2em] font-bold text-brand-gold drop-shadow-sm opacity-80">Вниз</span>
+            <motion.div
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              className="bg-brand-card-bg/90 backdrop-blur-md p-2 rounded-full border border-brand-gold/30 shadow-md text-brand-gold/90"
+            >
+              <ChevronDown className="h-5 w-5" />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Lightbox / Modal for Doctor Portrait */}
       <AnimatePresence>

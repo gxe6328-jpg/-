@@ -141,9 +141,17 @@ export default function Accordions() {
                   {item.title}
                 </span>
               </div>
-              <div className="rounded-full bg-brand-cream-dark/30 dark:bg-brand-cream-dark/60 p-1.5 text-brand-slate/50 dark:text-brand-slate/60 shrink-0 transition-all duration-300 group-hover:bg-brand-gold/20 group-hover:text-brand-gold flex items-center justify-center">
-                <AnimatedToggleIcon isOpen={isOpen} size="md" />
-              </div>
+              <motion.div 
+                className={`relative flex items-center justify-center shrink-0 w-8 h-8 rounded-full border shadow-xs transition-all duration-300 group-hover:shadow-sm ${
+                  isOpen 
+                    ? "bg-brand-gold/15 border-brand-gold/40 text-brand-gold" 
+                    : "bg-brand-card-bg border-brand-cream-dark/50 dark:border-brand-cream-dark/30 text-brand-slate/60 group-hover:text-brand-gold group-hover:border-brand-gold/40"
+                }`}
+                animate={{ rotate: isOpen ? 180 : 0 }}
+                transition={{ duration: 0.4, type: "spring", stiffness: 200, damping: 20 }}
+              >
+                <AnimatedToggleIcon isOpen={isOpen} size="sm" />
+              </motion.div>
             </button>
 
             <AnimatePresence initial={false}>
