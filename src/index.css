@@ -20,20 +20,18 @@ img {
   color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --brand-cream-light: #0D0D0B;
-    --brand-cream: #181715;
-    --brand-cream-dark: #2F2D29;
-    --brand-gold-dark: #9F937E;
-    --brand-slate: #F2EFE9;
-    --brand-charcoal: #E5E2DB;
-    --brand-sage-light: #1E211D;
-    --brand-card-bg: #1B1A17;
-    --brand-btn-border: rgba(242, 239, 233, 0.12);
-    --brand-btn-border-hover: rgba(139, 126, 102, 0.5);
-    --brand-btn-hover-bg: rgba(47, 45, 41, 0.25);
-  }
+html.dark, :root.dark {
+  --brand-cream-light: #0D0D0B;
+  --brand-cream: #181715;
+  --brand-cream-dark: #2F2D29;
+  --brand-gold-dark: #9F937E;
+  --brand-slate: #F2EFE9;
+  --brand-charcoal: #E5E2DB;
+  --brand-sage-light: #1E211D;
+  --brand-card-bg: #1B1A17;
+  --brand-btn-border: rgba(242, 239, 233, 0.12);
+  --brand-btn-border-hover: rgba(139, 126, 102, 0.5);
+  --brand-btn-hover-bg: rgba(47, 45, 41, 0.25);
 }
 
 @theme {
@@ -77,10 +75,8 @@ body {
   transition: filter 0.3s ease;
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo-brighten {
-    filter: brightness(1.3) contrast(1.15) drop-shadow(0 0 3px rgba(255, 255, 255, 0.35));
-  }
+.dark .logo-brighten {
+  filter: brightness(1.3) contrast(1.15) drop-shadow(0 0 3px rgba(255, 255, 255, 0.35));
 }
 
 /* Custom scrollbar for a premium feel */

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   Award,
@@ -12,7 +12,9 @@ import {
   MessageSquare,
   X,
   ZoomIn,
-  ZoomOut
+  ZoomOut,
+  Sun,
+  Moon
 } from "lucide-react";
 import Accordions from "./components/Accordions";
 import AnimatedToggleIcon from "./components/AnimatedToggleIcon";
@@ -74,6 +76,25 @@ export default function App() {
   const [openHelpIdx, setOpenHelpIdx] = useState<number | null>(null);
   const [isImageOpen, setIsImageOpen] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(1);
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    const saved = localStorage.getItem("theme");
+    if (saved === "light" || saved === "dark") return saved;
+    return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  });
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === "dark" ? "light" : "dark");
+  };
 
   const toggleHelp = (idx: number) => {
     setOpenHelpIdx(openHelpIdx === idx ? null : idx);
@@ -107,8 +128,23 @@ export default function App() {
       {/* MOBILE & TABLET LAYOUT (Screens under lg)                  */}
       {/* Inspired by Taplink link-in-bio style, matching mockup     */}
       {/* ========================================================== */}
-      <div className="block lg:hidden w-full max-w-md mx-auto min-h-screen flex flex-col bg-brand-cream-light">
+      <div className="relative block lg:hidden w-full max-w-md mx-auto min-h-screen flex flex-col bg-brand-cream-light">
         
+        {/* Top Floating Controls for Mobile */}
+        <div className="absolute top-4 right-4 z-20 flex items-center gap-2">
+          <button
+            onClick={toggleTheme}
+            aria-label="Переключить тему оформления"
+            className="p-2.5 bg-brand-card-bg hover:bg-brand-btn-hover-bg text-brand-slate/70 hover:text-brand-gold rounded-full border border-brand-btn-border transition-all duration-300 shadow-xs cursor-pointer flex items-center justify-center focus:outline-hidden"
+          >
+            {theme === "dark" ? (
+              <Sun className="h-4.5 w-4.5" />
+            ) : (
+              <Moon className="h-4.5 w-4.5" />
+            )}
+          </button>
+        </div>
+
         {/* Top Portrait Image centered and scaled down */}
         <div className="flex justify-center pt-8 pb-4">
           <button
@@ -365,6 +401,17 @@ export default function App() {
                 <img src={maxLogo} className="h-4.5 w-4.5 object-contain rounded-sm logo-brighten" alt="Max" />
                 <span>Мессенджер МАКС</span>
               </a>
+              <button
+                onClick={toggleTheme}
+                aria-label="Переключить тему оформления"
+                className="bg-brand-card-bg hover:bg-brand-btn-hover-bg text-brand-slate/80 hover:text-brand-gold p-2.5 rounded-xl border border-brand-btn-border hover:border-brand-btn-border-hover transition-all duration-300 flex items-center justify-center cursor-pointer shadow-xs focus:outline-hidden"
+              >
+                {theme === "dark" ? (
+                  <Sun className="h-4.5 w-4.5" />
+                ) : (
+                  <Moon className="h-4.5 w-4.5" />
+                )}
+              </button>
             </div>
           </div>
         </header>
