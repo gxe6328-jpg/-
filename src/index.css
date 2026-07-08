@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 :root {
-  color-scheme: dark light;
+  color-scheme: only light;
   --brand-cream-light: #FBFBF9;
   --brand-cream: #EAE7E0;
   --brand-cream-dark: #D6D1C5;
@@ -17,10 +17,11 @@
 }
 
 img {
-  color-scheme: light;
+  color-scheme: only light;
 }
 
 html.dark, :root.dark {
+  color-scheme: only dark;
   --brand-cream-light: #0D0D0B;
   --brand-cream: #181715;
   --brand-cream-dark: #2F2D29;

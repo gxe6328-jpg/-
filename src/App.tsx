@@ -179,7 +179,7 @@ export default function App() {
         </div>
 
         {/* Primary Booking Button as explicitly requested */}
-        <div className="px-6 mt-6">
+        <div className="px-6 mt-6" data-section="mobile-booking">
           <a
             href="https://app2.sqns.ru/booking/booking?orgid=8780#/employees"
             target="_blank"
@@ -232,7 +232,7 @@ export default function App() {
 
         {/* Accordions and Information list */}
         <div className="px-6 space-y-6 flex-1">
-          <ScrollAnimate className="space-y-6">
+          <ScrollAnimate className="space-y-6" data-section="mobile-help">
             <div className="flex items-center gap-3">
               <div className="p-2.5 bg-brand-cream/50 text-brand-gold rounded-xl">
                 <ShieldCheck className="h-5 w-5" />
@@ -294,7 +294,7 @@ export default function App() {
             <div className="h-[1px] flex-1 bg-brand-cream-dark/50" />
           </div>
 
-          <ScrollAnimate>
+          <ScrollAnimate data-section="mobile-info">
             <Accordions />
           </ScrollAnimate>
 
@@ -308,7 +308,7 @@ export default function App() {
           </div>
 
           {/* Contacts and Locations section on mobile */}
-          <ScrollAnimate className="space-y-4">
+          <ScrollAnimate className="space-y-4" data-section="mobile-addresses">
             <div className="flex items-center gap-3">
               <div className="p-2.5 bg-brand-cream/50 text-brand-gold rounded-xl">
                 <MapPin className="h-5 w-5" />
@@ -488,7 +488,7 @@ export default function App() {
             </div>
 
             {/* Who and How section */}
-            <ScrollAnimate className="space-y-4">
+            <ScrollAnimate className="space-y-4" data-section="desktop-help">
               <section className="space-y-4">
                 <div className="flex items-center gap-2">
                   <div className="h-2 w-2 bg-brand-gold rounded-full" />
@@ -548,7 +548,7 @@ export default function App() {
             </div>
 
             {/* Accordions */}
-            <ScrollAnimate className="space-y-4">
+            <ScrollAnimate className="space-y-4" data-section="desktop-info">
               <section className="space-y-4">
                 <div className="flex items-center gap-2">
                   <div className="h-2 w-2 bg-brand-gold rounded-full" />
@@ -588,7 +588,7 @@ export default function App() {
             </div>
 
             {/* Contact Panel */}
-            <div className="bg-brand-card-bg p-6 rounded-3xl border border-brand-cream-dark/60 shadow-sm space-y-4">
+            <div className="bg-brand-card-bg p-6 rounded-3xl border border-brand-cream-dark/60 shadow-sm space-y-4" data-section="desktop-booking">
               <h4 className="font-serif text-lg font-bold text-brand-slate">
                 Контакты и запись на прием
               </h4>
@@ -654,7 +654,7 @@ export default function App() {
               </p>
             </div>
 
-            <div className="space-y-3 text-xs">
+            <div className="space-y-3 text-xs" data-section="desktop-addresses">
               <h4 className="font-serif font-bold text-brand-gold uppercase tracking-wider">Контакты и кабинеты</h4>
               <div className="space-y-2 text-brand-cream-dark/80">
                 <div className="flex items-start gap-2">
@@ -768,6 +768,7 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
+
     </div>
   );
 }
