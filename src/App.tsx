@@ -71,6 +71,59 @@ const ScrollAnimate: React.FC<ScrollAnimateProps> = ({ children, className = "",
   );
 };
 
+const PulseDivider: React.FC<{ className?: string }> = ({ className = "py-3" }) => {
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, margin: "-45% 0px -45% 0px" }}
+      className={`flex items-center gap-4 relative overflow-hidden w-full ${className}`}
+    >
+      {/* Left Line */}
+      <div className="h-[1px] flex-1 bg-brand-cream-dark/30 dark:bg-brand-cream-dark/15 relative overflow-hidden">
+        {/* Glow movement */}
+        <motion.div
+          variants={{
+            hidden: { left: "-100%" },
+            visible: {
+              left: "100%",
+              transition: {
+                duration: 1.2,
+                ease: "easeInOut",
+              }
+            }
+          }}
+          className="absolute top-0 bottom-0 w-32 bg-gradient-to-r from-transparent via-brand-gold/40 dark:via-brand-gold/25 to-transparent"
+        />
+      </div>
+
+      {/* Heart beat icon with pulse wave */}
+      <div className="relative shrink-0 flex items-center justify-center mx-1 text-brand-gold/60 dark:text-brand-gold/50">
+        <Activity className="h-4.5 w-4.5" />
+      </div>
+
+      {/* Right Line */}
+      <div className="h-[1px] flex-1 bg-brand-cream-dark/30 dark:bg-brand-cream-dark/15 relative overflow-hidden">
+        {/* Glow movement */}
+        <motion.div
+          variants={{
+            hidden: { left: "-100%" },
+            visible: {
+              left: "100%",
+              transition: {
+                duration: 1.2,
+                ease: "easeInOut",
+                delay: 0.5,
+              }
+            }
+          }}
+          className="absolute top-0 bottom-0 w-32 bg-gradient-to-r from-transparent via-brand-gold/40 dark:via-brand-gold/25 to-transparent"
+        />
+      </div>
+    </motion.div>
+  );
+};
+
 export default function App() {
   const [shared, setShared] = useState(false);
   const [openHelpIdx, setOpenHelpIdx] = useState<number | null>(null);
@@ -222,13 +275,7 @@ export default function App() {
         </ScrollAnimate>
 
         {/* Heart Rate / ECG divider matching image */}
-        <div className="flex items-center gap-4 px-6 py-6">
-          <div className="h-[1px] flex-1 bg-brand-cream-dark/50" />
-          <div className="text-brand-gold shrink-0">
-            <Activity className="h-4 w-4" />
-          </div>
-          <div className="h-[1px] flex-1 bg-brand-cream-dark/50" />
-        </div>
+        <PulseDivider className="px-6 py-6" />
 
         {/* Accordions and Information list */}
         <div className="px-6 space-y-6 flex-1">
@@ -286,26 +333,14 @@ export default function App() {
           </ScrollAnimate>
 
           {/* Heart Rate / ECG divider */}
-          <div className="flex items-center gap-4 py-2">
-            <div className="h-[1px] flex-1 bg-brand-cream-dark/50" />
-            <div className="text-brand-gold shrink-0">
-              <Activity className="h-4 w-4" />
-            </div>
-            <div className="h-[1px] flex-1 bg-brand-cream-dark/50" />
-          </div>
+          <PulseDivider className="py-2" />
 
           <ScrollAnimate data-section="mobile-info">
             <Accordions />
           </ScrollAnimate>
 
           {/* Heart Rate / ECG divider */}
-          <div className="flex items-center gap-4 py-2">
-            <div className="h-[1px] flex-1 bg-brand-cream-dark/50" />
-            <div className="text-brand-gold shrink-0">
-              <Activity className="h-4 w-4" />
-            </div>
-            <div className="h-[1px] flex-1 bg-brand-cream-dark/50" />
-          </div>
+          <PulseDivider className="py-2" />
 
           {/* Contacts and Locations section on mobile */}
           <ScrollAnimate className="space-y-4" data-section="mobile-addresses">
@@ -479,13 +514,7 @@ export default function App() {
             </ScrollAnimate>
 
             {/* Divider with Heart Rate Line */}
-            <div className="flex items-center gap-4 py-3">
-              <div className="h-[1px] flex-1 bg-brand-cream-dark/50" />
-              <div className="text-brand-gold shrink-0">
-                <Activity className="h-4 w-4" />
-              </div>
-              <div className="h-[1px] flex-1 bg-brand-cream-dark/50" />
-            </div>
+            <PulseDivider className="py-3" />
 
             {/* Who and How section */}
             <ScrollAnimate className="space-y-4" data-section="desktop-help">
@@ -539,13 +568,7 @@ export default function App() {
             </ScrollAnimate>
 
             {/* Divider with Heart Rate Line */}
-            <div className="flex items-center gap-4 py-3">
-              <div className="h-[1px] flex-1 bg-brand-cream-dark/50" />
-              <div className="text-brand-gold shrink-0">
-                <Activity className="h-4 w-4" />
-              </div>
-              <div className="h-[1px] flex-1 bg-brand-cream-dark/50" />
-            </div>
+            <PulseDivider className="py-3" />
 
             {/* Accordions */}
             <ScrollAnimate className="space-y-4" data-section="desktop-info">
