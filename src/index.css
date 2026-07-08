@@ -2,6 +2,7 @@
 @import "tailwindcss";
 
 :root {
+  color-scheme: dark light;
   --brand-cream-light: #FBFBF9;
   --brand-cream: #EAE7E0;
   --brand-cream-dark: #D6D1C5;
@@ -13,6 +14,10 @@
   --brand-btn-border: rgba(26, 26, 26, 0.15);
   --brand-btn-border-hover: rgba(26, 26, 26, 0.35);
   --brand-btn-hover-bg: rgba(214, 209, 197, 0.15);
+}
+
+img {
+  color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
