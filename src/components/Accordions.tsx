@@ -128,7 +128,7 @@ export default function Accordions() {
         return (
           <div
             key={item.id}
-            className="border border-brand-cream-dark/70 rounded-2xl bg-brand-card-bg overflow-hidden transition-all duration-300 hover:border-brand-gold/50 hover:shadow-sm"
+            className="border border-brand-cream-dark/60 dark:border-brand-cream-dark/25 rounded-2xl bg-brand-card-bg/60 dark:bg-brand-card-bg/40 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-brand-gold/50 hover:shadow-md"
           >
             <button
               onClick={() => toggle(item.id)}
@@ -145,7 +145,7 @@ export default function Accordions() {
                 className={`relative flex items-center justify-center shrink-0 w-8 h-8 rounded-full border shadow-xs transition-all duration-300 group-hover:shadow-sm ${
                   isOpen 
                     ? "bg-brand-gold/15 border-brand-gold/40 text-brand-gold" 
-                    : "bg-brand-card-bg border-brand-cream-dark/50 dark:border-brand-cream-dark/30 text-brand-slate/60 group-hover:text-brand-gold group-hover:border-brand-gold/40"
+                    : "bg-brand-card-bg/70 dark:bg-brand-card-bg/50 border-brand-cream-dark/50 dark:border-brand-cream-dark/30 text-brand-slate/60 group-hover:text-brand-gold group-hover:border-brand-gold/40"
                 }`}
                 animate={{ rotate: isOpen ? 180 : 0 }}
                 transition={{ duration: 0.4, type: "spring", stiffness: 200, damping: 20 }}
@@ -162,7 +162,7 @@ export default function Accordions() {
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                 >
-                  <div className="px-5 pb-5 pt-1 border-t border-brand-cream-light bg-brand-cream-light/30">
+                  <div className="px-5 pb-5 pt-1 border-t border-brand-cream-dark/30 dark:border-brand-cream-dark/15 bg-brand-cream-light/30">
                     {item.content}
                   </div>
                 </motion.div>

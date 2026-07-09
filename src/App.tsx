@@ -182,12 +182,17 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-brand-cream-light text-brand-charcoal selection:bg-brand-gold/30 selection:text-brand-slate flex flex-col font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-brand-cream-light text-brand-charcoal selection:bg-brand-gold/30 selection:text-brand-slate flex flex-col font-sans overflow-x-hidden relative">
+      {/* Liquid Glass Background Blur Blobs */}
+      <div className="absolute top-[10%] left-[-15%] w-[320px] md:w-[600px] h-[320px] md:h-[600px] bg-brand-gold/8 dark:bg-brand-gold/5 rounded-full blur-[70px] md:blur-[130px] pointer-events-none z-0" />
+      <div className="absolute bottom-[20%] right-[-15%] w-[350px] md:w-[700px] h-[350px] md:h-[700px] bg-brand-sage/6 dark:bg-brand-gold/4 rounded-full blur-[80px] md:blur-[150px] pointer-events-none z-0" />
+      <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-brand-cream-dark/10 dark:bg-brand-cream-dark/4 rounded-full blur-[90px] pointer-events-none z-0" />
+
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="flex flex-col flex-1"
+        className="flex flex-col flex-1 z-10"
         style={{ backfaceVisibility: "hidden", transform: "translate3d(0, 0, 0)" }}
       >
       
@@ -195,14 +200,14 @@ export default function App() {
       {/* MOBILE & TABLET LAYOUT (Screens under lg)                  */}
       {/* Inspired by Taplink link-in-bio style, matching mockup     */}
       {/* ========================================================== */}
-      <div className="relative block lg:hidden w-full max-w-md mx-auto min-h-screen flex flex-col bg-brand-cream-light">
+      <div className="relative block lg:hidden w-full max-w-md mx-auto min-h-screen flex flex-col bg-transparent">
         
         {/* Top Floating Controls for Mobile */}
         <div className="absolute top-4 right-4 z-20 flex items-center gap-2">
           <button
             onClick={toggleTheme}
             aria-label="Переключить тему оформления"
-            className="p-2.5 bg-brand-card-bg hover:bg-brand-btn-hover-bg text-brand-slate/70 hover:text-brand-gold rounded-full border border-brand-btn-border transition-all duration-300 shadow-xs cursor-pointer flex items-center justify-center focus:outline-hidden"
+            className="p-2.5 bg-brand-card-bg/60 dark:bg-brand-card-bg/40 backdrop-blur-md hover:bg-brand-btn-hover-bg text-brand-slate/70 hover:text-brand-gold rounded-full border border-brand-btn-border hover:border-brand-gold/30 transition-all duration-300 shadow-xs cursor-pointer flex items-center justify-center focus:outline-hidden"
           >
             {theme === "dark" ? (
               <Sun className="h-4.5 w-4.5" />
@@ -251,10 +256,10 @@ export default function App() {
             href="https://app2.sqns.ru/booking/booking?orgid=8780#/employees"
             target="_blank"
             rel="noreferrer"
-            className="w-full bg-brand-card-bg hover:bg-brand-gold/5 text-brand-slate py-4.5 px-5 rounded-2xl border-2 border-brand-gold hover:border-brand-gold transition-all duration-300 shadow-md active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer relative overflow-hidden group"
+            className="w-full bg-brand-card-bg/65 dark:bg-brand-card-bg/45 backdrop-blur-md hover:bg-brand-gold/15 text-brand-slate py-4.5 px-5 rounded-2xl border-2 border-brand-gold/70 hover:border-brand-gold transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer relative overflow-hidden group"
           >
-            <div className="absolute inset-0 w-1/2 h-full bg-brand-gold/10 -skew-x-12 -translate-x-full group-hover:translate-x-[250%] transition-transform duration-1000" />
-            <span className="text-xs uppercase tracking-[0.15em] font-extrabold text-brand-slate flex items-center gap-1.5">
+            <div className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 dark:via-white/5 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-[250%] transition-transform duration-1000" />
+            <span className="text-xs uppercase tracking-[0.15em] font-extrabold text-brand-slate flex items-center gap-1.5 drop-shadow-xs">
               ЗАПИСЬ НА ПРИЕМ
             </span>
             <span className="text-[10px] text-brand-gold-dark mt-1 font-semibold uppercase tracking-wider">Клиника на Пирогова (г. Щёкино)</span>
@@ -267,7 +272,7 @@ export default function App() {
             href="https://vk.ru/good_psihika"
             target="_blank"
             rel="noreferrer"
-            className="w-full bg-brand-card-bg hover:bg-brand-btn-hover-bg text-brand-slate font-sans py-4 px-6 rounded-2xl border border-brand-btn-border hover:border-brand-btn-border-hover transition-all duration-300 shadow-xs active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer"
+            className="w-full bg-brand-card-bg/65 dark:bg-brand-card-bg/45 backdrop-blur-md hover:bg-brand-btn-hover-bg text-brand-slate font-sans py-4 px-6 rounded-2xl border border-brand-btn-border hover:border-brand-gold/40 transition-all duration-300 shadow-xs hover:shadow-md hover:scale-[1.01] active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer"
           >
             <span className="text-xs uppercase tracking-[0.15em] font-bold text-brand-slate flex items-center gap-2">
               <img src={vkLogo} className="h-5.5 w-5.5 object-contain logo-brighten" alt="VK" /> СВЯЗАТЬСЯ В ВКОНТАКТЕ
@@ -279,7 +284,7 @@ export default function App() {
             href="https://max.ru"
             target="_blank"
             rel="noreferrer"
-            className="w-full bg-brand-card-bg hover:bg-brand-btn-hover-bg text-brand-slate font-sans py-4 px-6 rounded-2xl border border-brand-btn-border hover:border-brand-btn-border-hover transition-all duration-300 shadow-xs active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer"
+            className="w-full bg-brand-card-bg/65 dark:bg-brand-card-bg/45 backdrop-blur-md hover:bg-brand-btn-hover-bg text-brand-slate font-sans py-4 px-6 rounded-2xl border border-brand-btn-border hover:border-brand-gold/40 transition-all duration-300 shadow-xs hover:shadow-md hover:scale-[1.01] active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer"
           >
             <span className="text-xs uppercase tracking-[0.15em] font-bold text-brand-slate flex items-center gap-2">
               <img src={maxLogo} className="h-4.5 w-4.5 object-contain rounded-md logo-brighten" alt="Max" /> МЕССЕНДЖЕР МАКС
@@ -306,7 +311,7 @@ export default function App() {
               </div>
             </div>
 
-            <div className="bg-brand-card-bg rounded-3xl border border-brand-cream-dark/60 shadow-xs divide-y divide-brand-cream-dark/40 overflow-hidden">
+            <div className="bg-brand-card-bg/65 dark:bg-brand-card-bg/45 backdrop-blur-md rounded-3xl border border-brand-cream-dark/60 dark:border-brand-cream-dark/25 shadow-xs divide-y divide-brand-cream-dark/40 dark:divide-brand-cream-dark/20 overflow-hidden">
               {helpCategories.map((cat, idx) => {
                 const isOpen = openHelpIdx === idx;
                 return (
@@ -370,7 +375,7 @@ export default function App() {
               </div>
             </div>
 
-            <div className="bg-brand-card-bg p-5 rounded-3xl border border-brand-cream-dark/60 shadow-xs space-y-4 text-left">
+            <div className="bg-brand-card-bg/65 dark:bg-brand-card-bg/45 backdrop-blur-md p-5 rounded-3xl border border-brand-cream-dark/60 dark:border-brand-cream-dark/25 shadow-xs space-y-4 text-left">
               <div className="space-y-3.5">
                 <div className="flex gap-3 text-xs text-brand-slate/85">
                   <MapPin className="h-4.5 w-4.5 text-brand-gold shrink-0 mt-0.5" />
@@ -415,7 +420,7 @@ export default function App() {
       <div className="hidden lg:flex flex-col min-h-screen">
         
         {/* Desktop Header */}
-        <header className="w-full bg-brand-card-bg/85 backdrop-blur-md border-b border-brand-cream-dark/60 sticky top-0 z-40 px-4 py-5">
+        <header className="w-full bg-brand-card-bg/60 dark:bg-brand-card-bg/40 backdrop-blur-md border-b border-brand-cream-dark/45 dark:border-brand-cream-dark/20 sticky top-0 z-40 px-4 py-5">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="h-10 w-10 bg-brand-slate text-brand-cream rounded-xl flex items-center justify-center font-serif text-xl font-bold border border-brand-gold/30 shadow-sm">
@@ -436,7 +441,7 @@ export default function App() {
                 href="https://vk.ru/good_psihika"
                 target="_blank"
                 rel="noreferrer"
-                className="bg-brand-card-bg hover:bg-brand-btn-hover-bg text-brand-slate text-xs font-semibold px-4 py-2.5 rounded-xl border border-brand-btn-border hover:border-brand-btn-border-hover transition-all duration-300 flex items-center gap-2 cursor-pointer"
+                className="bg-brand-card-bg/65 dark:bg-brand-card-bg/45 backdrop-blur-md hover:bg-brand-btn-hover-bg text-brand-slate text-xs font-semibold px-4 py-2.5 rounded-xl border border-brand-btn-border hover:border-brand-gold/45 hover:scale-[1.02] active:scale-95 hover:shadow-xs transition-all duration-300 flex items-center gap-2 cursor-pointer"
               >
                 <img src={vkLogo} className="h-5.5 w-5.5 object-contain logo-brighten" alt="VK" />
                 <span>ВКонтакте</span>
@@ -445,7 +450,7 @@ export default function App() {
                 href="https://max.ru"
                 target="_blank"
                 rel="noreferrer"
-                className="bg-brand-card-bg hover:bg-brand-btn-hover-bg text-brand-slate text-xs font-semibold px-4 py-2.5 rounded-xl border border-brand-btn-border hover:border-brand-btn-border-hover transition-all duration-300 flex items-center gap-2 cursor-pointer"
+                className="bg-brand-card-bg/65 dark:bg-brand-card-bg/45 backdrop-blur-md hover:bg-brand-btn-hover-bg text-brand-slate text-xs font-semibold px-4 py-2.5 rounded-xl border border-brand-btn-border hover:border-brand-gold/45 hover:scale-[1.02] active:scale-95 hover:shadow-xs transition-all duration-300 flex items-center gap-2 cursor-pointer"
               >
                 <img src={maxLogo} className="h-4.5 w-4.5 object-contain rounded-sm logo-brighten" alt="Max" />
                 <span>Мессенджер МАКС</span>
@@ -453,7 +458,7 @@ export default function App() {
               <button
                 onClick={toggleTheme}
                 aria-label="Переключить тему оформления"
-                className="bg-brand-card-bg hover:bg-brand-btn-hover-bg text-brand-slate/80 hover:text-brand-gold p-2.5 rounded-xl border border-brand-btn-border hover:border-brand-btn-border-hover transition-all duration-300 flex items-center justify-center cursor-pointer shadow-xs focus:outline-hidden"
+                className="bg-brand-card-bg/65 dark:bg-brand-card-bg/45 backdrop-blur-md hover:bg-brand-btn-hover-bg text-brand-slate/80 hover:text-brand-gold p-2.5 rounded-xl border border-brand-btn-border hover:border-brand-gold/45 hover:scale-[1.05] active:scale-95 transition-all duration-300 flex items-center justify-center cursor-pointer shadow-xs focus:outline-hidden"
               >
                 {theme === "dark" ? (
                   <Sun className="h-4.5 w-4.5" />
@@ -495,7 +500,7 @@ export default function App() {
             {/* Credentials Row */}
             <ScrollAnimate delay={0.1}>
               <section className="grid grid-cols-3 gap-4">
-                <div className="bg-brand-card-bg p-5 rounded-2xl border border-brand-cream-dark/60 shadow-xs flex items-center gap-3.5 hover:border-brand-gold/40 transition-colors">
+                <div className="bg-brand-card-bg/60 dark:bg-brand-card-bg/40 backdrop-blur-md p-5 rounded-2xl border border-brand-cream-dark/50 dark:border-brand-cream-dark/25 shadow-xs flex items-center gap-3.5 hover:border-brand-gold/40 hover:shadow-sm transition-all duration-300">
                   <div className="p-2.5 bg-brand-cream/50 text-brand-gold rounded-xl">
                     <Award className="h-5 w-5" />
                   </div>
@@ -505,7 +510,7 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="bg-brand-card-bg p-5 rounded-2xl border border-brand-cream-dark/60 shadow-xs flex items-center gap-3.5 hover:border-brand-gold/40 transition-colors">
+                <div className="bg-brand-card-bg/60 dark:bg-brand-card-bg/40 backdrop-blur-md p-5 rounded-2xl border border-brand-cream-dark/50 dark:border-brand-cream-dark/25 shadow-xs flex items-center gap-3.5 hover:border-brand-gold/40 hover:shadow-sm transition-all duration-300">
                   <div className="p-2.5 bg-brand-cream/50 text-brand-gold rounded-xl">
                     <BookOpen className="h-5 w-5" />
                   </div>
@@ -515,7 +520,7 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="bg-brand-card-bg p-5 rounded-2xl border border-brand-cream-dark/60 shadow-xs flex items-center gap-3.5 hover:border-brand-gold/40 transition-colors">
+                <div className="bg-brand-card-bg/60 dark:bg-brand-card-bg/40 backdrop-blur-md p-5 rounded-2xl border border-brand-cream-dark/50 dark:border-brand-cream-dark/25 shadow-xs flex items-center gap-3.5 hover:border-brand-gold/40 hover:shadow-sm transition-all duration-300">
                   <div className="p-2.5 bg-brand-cream/50 text-brand-gold rounded-xl">
                     <ShieldCheck className="h-5 w-5" />
                   </div>
@@ -540,7 +545,7 @@ export default function App() {
                   </h3>
                 </div>
                 
-                <div className="bg-brand-card-bg rounded-3xl border border-brand-cream-dark/60 shadow-xs divide-y divide-brand-cream-dark/40 overflow-hidden">
+                <div className="bg-brand-card-bg/65 dark:bg-brand-card-bg/45 backdrop-blur-md rounded-3xl border border-brand-cream-dark/60 dark:border-brand-cream-dark/25 shadow-xs divide-y divide-brand-cream-dark/40 dark:divide-brand-cream-dark/20 overflow-hidden">
                   {helpCategories.map((cat, idx) => {
                     const isOpen = openHelpIdx === idx;
                     return (
@@ -625,7 +630,7 @@ export default function App() {
             </div>
 
             {/* Contact Panel */}
-            <div className="bg-brand-card-bg p-6 rounded-3xl border border-brand-cream-dark/60 shadow-sm space-y-4" data-section="desktop-booking">
+            <div className="bg-brand-card-bg/55 dark:bg-brand-card-bg/40 backdrop-blur-md p-6 rounded-3xl border border-brand-cream-dark/60 dark:border-brand-cream-dark/25 shadow-md hover:shadow-lg transition-all duration-300 space-y-4" data-section="desktop-booking">
               <h4 className="font-serif text-lg font-bold text-brand-slate">
                 Контакты и запись на прием
               </h4>
@@ -634,9 +639,9 @@ export default function App() {
                 href="https://app2.sqns.ru/booking/booking?orgid=8780#/employees"
                 target="_blank"
                 rel="noreferrer"
-                className="w-full bg-brand-card-bg hover:bg-brand-gold/5 text-brand-slate py-4.5 px-6 rounded-2xl border-2 border-brand-gold hover:border-brand-gold transition-all duration-300 shadow-md active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer group relative overflow-hidden"
+                className="w-full bg-brand-card-bg/65 dark:bg-brand-card-bg/45 backdrop-blur-md hover:bg-brand-gold/15 text-brand-slate py-4.5 px-6 rounded-2xl border-2 border-brand-gold/70 hover:border-brand-gold transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer group relative overflow-hidden"
               >
-                <div className="absolute inset-0 w-1/2 h-full bg-brand-gold/10 -skew-x-12 -translate-x-full group-hover:translate-x-[250%] transition-transform duration-1000" />
+                <div className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 dark:via-white/5 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-[250%] transition-transform duration-1000" />
                 <span className="text-xs uppercase font-sans tracking-[0.15em] font-extrabold text-brand-slate">ЗАПИСАТЬСЯ НА ПРИЕМ</span>
                 <span className="text-[10px] text-brand-gold-dark mt-1 font-semibold uppercase tracking-wider font-sans">Клиника на Пирогова (г. Щёкино)</span>
               </a>
@@ -646,7 +651,7 @@ export default function App() {
                   href="https://vk.ru/good_psihika"
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-brand-card-bg hover:bg-brand-btn-hover-bg text-brand-slate text-xs font-semibold py-3.5 px-4 rounded-xl border border-brand-btn-border hover:border-brand-btn-border-hover transition-all duration-300 text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer"
+                  className="bg-brand-card-bg/65 dark:bg-brand-card-bg/45 backdrop-blur-md hover:bg-brand-btn-hover-bg/85 text-brand-slate text-xs font-semibold py-3.5 px-4 rounded-xl border border-brand-btn-border hover:border-brand-gold/45 transition-all duration-300 hover:scale-[1.02] active:scale-95 text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer shadow-xs"
                 >
                   <img src={vkLogo} className="h-6 w-6 object-contain logo-brighten" alt="VK" />
                   <span className="tracking-wider uppercase text-[10px]">МОЙ ВКОНТАКТЕ</span>
@@ -655,7 +660,7 @@ export default function App() {
                   href="https://max.ru"
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-brand-card-bg hover:bg-brand-btn-hover-bg text-brand-slate text-xs font-semibold py-3.5 px-4 rounded-xl border border-brand-btn-border hover:border-brand-btn-border-hover transition-all duration-300 text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer"
+                  className="bg-brand-card-bg/65 dark:bg-brand-card-bg/45 backdrop-blur-md hover:bg-brand-btn-hover-bg/85 text-brand-slate text-xs font-semibold py-3.5 px-4 rounded-xl border border-brand-btn-border hover:border-brand-gold/45 transition-all duration-300 hover:scale-[1.02] active:scale-95 text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer shadow-xs"
                 >
                   <img src={maxLogo} className="h-5 w-5 object-contain rounded-sm logo-brighten" alt="Max" />
                   <span className="tracking-wider uppercase text-[10px]">МЕССЕНДЖЕР МАКС</span>
@@ -664,7 +669,7 @@ export default function App() {
 
               <button
                 onClick={handleShare}
-                className="w-full py-3 bg-brand-cream/40 text-brand-slate/70 hover:text-brand-slate hover:bg-brand-cream-dark/30 text-xs font-semibold rounded-xl border border-brand-cream-dark/50 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-3 bg-brand-cream/40 text-brand-slate/70 hover:text-brand-slate hover:bg-brand-cream-dark/30 text-xs font-semibold rounded-xl border border-brand-cream-dark/50 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs"
               >
                 <Share2 className="h-4 w-4" />
                 <span>{shared ? "Ссылка скопирована!" : "Поделиться контактом"}</span>
