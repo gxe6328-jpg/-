@@ -317,7 +317,7 @@ export default function App() {
                 return (
                   <div
                     key={idx}
-                    className="transition-colors duration-300 hover:bg-brand-cream-light/20"
+                    className="scroll-mt-24 transition-colors duration-300 hover:bg-brand-cream-light/20"
                   >
                     <button
                       onClick={() => toggleHelp(idx)}
@@ -327,9 +327,17 @@ export default function App() {
                         <span className="h-1.5 w-1.5 bg-brand-gold rounded-full shrink-0" />
                         {cat.title}
                       </h4>
-                      <div className="rounded-full bg-brand-cream-dark/30 dark:bg-brand-cream-dark/60 p-1.5 text-brand-slate/50 dark:text-brand-slate/60 shrink-0 transition-all duration-300 group-hover:bg-brand-gold/20 group-hover:text-brand-gold flex items-center justify-center">
-                        <AnimatedToggleIcon isOpen={isOpen} />
-                      </div>
+                      <motion.div 
+                        className={`relative flex items-center justify-center shrink-0 w-7 h-7 rounded-full border shadow-xs transition-all duration-300 group-hover:shadow-sm ${
+                          isOpen 
+                            ? "bg-brand-gold/15 border-brand-gold/40 text-brand-gold" 
+                            : "bg-brand-card-bg/70 dark:bg-brand-card-bg/50 border-brand-cream-dark/50 dark:border-brand-cream-dark/30 text-brand-slate/60 group-hover:text-brand-gold group-hover:border-brand-gold/40"
+                        }`}
+                        animate={{ rotate: isOpen ? 180 : 0 }}
+                        transition={{ duration: 0.4, type: "spring", stiffness: 200, damping: 20 }}
+                      >
+                        <AnimatedToggleIcon isOpen={isOpen} size="xs" />
+                      </motion.div>
                     </button>
                     <AnimatePresence initial={false}>
                       {isOpen && (
@@ -337,7 +345,8 @@ export default function App() {
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.25, ease: "easeInOut" }}
+                          transition={{ duration: 0.35, ease: [0.04, 0.62, 0.23, 0.98] }}
+                          className="overflow-hidden"
                         >
                           <div className="px-4 pb-4 pt-1.5 bg-brand-cream-light/10 text-[13px] sm:text-sm text-brand-slate/80 leading-relaxed font-medium">
                             {cat.desc}
@@ -551,7 +560,7 @@ export default function App() {
                     return (
                       <div
                         key={idx}
-                        className="transition-colors duration-300 hover:bg-brand-cream-light/20"
+                        className="scroll-mt-28 transition-colors duration-300 hover:bg-brand-cream-light/20"
                       >
                         <button
                           onClick={() => toggleHelp(idx)}
@@ -561,9 +570,17 @@ export default function App() {
                             <span className="h-1.5 w-1.5 bg-brand-gold rounded-full shrink-0" />
                             {cat.title}
                           </h4>
-                          <div className="rounded-full bg-brand-cream-dark/30 dark:bg-brand-cream-dark/60 p-1.5 text-brand-slate/50 dark:text-brand-slate/60 shrink-0 transition-all duration-300 group-hover:bg-brand-gold/20 group-hover:text-brand-gold flex items-center justify-center">
-                            <AnimatedToggleIcon isOpen={isOpen} size="sm" />
-                          </div>
+                          <motion.div 
+                            className={`relative flex items-center justify-center shrink-0 w-7 h-7 rounded-full border shadow-xs transition-all duration-300 group-hover:shadow-sm ${
+                              isOpen 
+                                ? "bg-brand-gold/15 border-brand-gold/40 text-brand-gold" 
+                                : "bg-brand-card-bg/70 dark:bg-brand-card-bg/50 border-brand-cream-dark/50 dark:border-brand-cream-dark/30 text-brand-slate/60 group-hover:text-brand-gold group-hover:border-brand-gold/40"
+                            }`}
+                            animate={{ rotate: isOpen ? 180 : 0 }}
+                            transition={{ duration: 0.4, type: "spring", stiffness: 200, damping: 20 }}
+                          >
+                            <AnimatedToggleIcon isOpen={isOpen} size="xs" />
+                          </motion.div>
                         </button>
                         <AnimatePresence initial={false}>
                           {isOpen && (
@@ -571,7 +588,8 @@ export default function App() {
                               initial={{ height: 0, opacity: 0 }}
                               animate={{ height: "auto", opacity: 1 }}
                               exit={{ height: 0, opacity: 0 }}
-                              transition={{ duration: 0.25, ease: "easeInOut" }}
+                              transition={{ duration: 0.35, ease: [0.04, 0.62, 0.23, 0.98] }}
+                              className="overflow-hidden"
                             >
                               <div className="px-6 pb-4 pt-1.5 bg-brand-cream-light/10 text-sm md:text-base text-brand-slate/80 leading-relaxed font-medium">
                                 {cat.desc}

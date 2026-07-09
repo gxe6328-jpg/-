@@ -128,7 +128,7 @@ export default function Accordions() {
         return (
           <div
             key={item.id}
-            className="border border-brand-cream-dark/60 dark:border-brand-cream-dark/25 rounded-2xl bg-brand-card-bg/60 dark:bg-brand-card-bg/40 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-brand-gold/50 hover:shadow-md"
+            className="scroll-mt-24 md:scroll-mt-28 border border-brand-cream-dark/60 dark:border-brand-cream-dark/25 rounded-2xl bg-brand-card-bg/60 dark:bg-brand-card-bg/40 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-brand-gold/50 hover:shadow-md"
           >
             <button
               onClick={() => toggle(item.id)}
@@ -160,7 +160,8 @@ export default function Accordions() {
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  transition={{ duration: 0.35, ease: [0.04, 0.62, 0.23, 0.98] }}
+                  className="overflow-hidden"
                 >
                   <div className="px-5 pb-5 pt-1 border-t border-brand-cream-dark/30 dark:border-brand-cream-dark/15 bg-brand-cream-light/30">
                     {item.content}

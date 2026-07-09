@@ -2,15 +2,15 @@ import { motion } from "motion/react";
 
 interface AnimatedToggleIconProps {
   isOpen: boolean;
-  size?: "sm" | "md";
+  size?: "xs" | "sm" | "md";
 }
 
 export default function AnimatedToggleIcon({ isOpen, size = "sm" }: AnimatedToggleIconProps) {
-  const lineSize = size === "md" ? "w-4 h-[1.5px]" : "w-3 h-[1.5px]";
-  const vertSize = size === "md" ? "w-[1.5px] h-4" : "w-[1.5px] h-3";
+  const lineSize = size === "md" ? "w-4 h-[1.5px]" : size === "xs" ? "w-2.5 h-[1.2px]" : "w-3 h-[1.5px]";
+  const vertSize = size === "md" ? "w-[1.5px] h-4" : size === "xs" ? "w-[1.2px] h-2.5" : "w-[1.5px] h-3";
 
   return (
-    <div className={`relative ${size === "md" ? "w-4 h-4" : "w-3 h-3"} flex items-center justify-center`}>
+    <div className={`relative ${size === "md" ? "w-4 h-4" : size === "xs" ? "w-2.5 h-2.5" : "w-3 h-3"} flex items-center justify-center`}>
       {/* Horizontal line (always present, forms the minus) */}
       <div className={`absolute ${lineSize} bg-current rounded-full`} />
       
