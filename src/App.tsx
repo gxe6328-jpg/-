@@ -726,7 +726,42 @@ export default function App() {
               </button>
             </div>
 
-            {/* Removed format card as requested */}
+            {/* Principles of Work Card */}
+            <div className="bg-brand-card-bg/55 dark:bg-brand-card-bg/40 backdrop-blur-md p-6 rounded-3xl border border-brand-cream-dark/60 dark:border-brand-cream-dark/25 shadow-md hover:shadow-lg transition-all duration-300 space-y-4" data-section="desktop-principles">
+              <h4 className="font-serif text-lg font-bold text-brand-slate flex items-center gap-2.5">
+                <ShieldCheck className="h-5 w-5 text-brand-gold" />
+                <span>Принципы моей работы</span>
+              </h4>
+              <div className="space-y-4 text-left">
+                <div className="space-y-1">
+                  <span className="text-xs font-bold text-brand-slate flex items-center gap-2 font-serif">
+                    <span className="h-1.5 w-1.5 bg-brand-gold rounded-full shrink-0" />
+                    Полная конфиденциальность
+                  </span>
+                  <p className="text-xs text-brand-slate/75 pl-3.5 leading-relaxed">
+                    Все ваши личные данные, истории и переживания остаются строго между нами в рамках врачебной тайны и этического кодекса.
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <span className="text-xs font-bold text-brand-slate flex items-center gap-2 font-serif">
+                    <span className="h-1.5 w-1.5 bg-brand-gold rounded-full shrink-0" />
+                    Научная доказательность
+                  </span>
+                  <p className="text-xs text-brand-slate/75 pl-3.5 leading-relaxed">
+                    Совмещение клинических медицинских знаний с современными методами психотерапии с доказанной эффективностью (КПТ, ОРКТ).
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <span className="text-xs font-bold text-brand-slate flex items-center gap-2 font-serif">
+                    <span className="h-1.5 w-1.5 bg-brand-gold rounded-full shrink-0" />
+                    Безопасность и бережность
+                  </span>
+                  <p className="text-xs text-brand-slate/75 pl-3.5 leading-relaxed">
+                    Создание поддерживающей атмосферы без осуждения, оценок или критики — только профессиональная поддержка и совместная работа.
+                  </p>
+                </div>
+              </div>
+            </div>
 
           </div>
         </main>
