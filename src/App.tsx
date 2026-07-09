@@ -15,7 +15,8 @@ import {
   ZoomOut,
   Sun,
   Moon,
-  ChevronDown
+  ChevronDown,
+  Lock
 } from "lucide-react";
 import Accordions from "./components/Accordions";
 import AnimatedToggleIcon from "./components/AnimatedToggleIcon";
@@ -137,6 +138,24 @@ export default function App() {
   const [openHelpIdx, setOpenHelpIdx] = useState<number | null>(null);
   const [isImageOpen, setIsImageOpen] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(1);
+  const [showBlockedToast, setShowBlockedToast] = useState(false);
+
+  useEffect(() => {
+    if (showBlockedToast) {
+      const timer = setTimeout(() => {
+        setShowBlockedToast(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [showBlockedToast]);
+
+  const triggerBlockedToast = (e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    setShowBlockedToast(true);
+  };
   const [theme, setTheme] = useState<"light" | "dark">(() => {
     const saved = localStorage.getItem("theme");
     if (saved === "light" || saved === "dark") return saved;
@@ -293,17 +312,17 @@ export default function App() {
             <span className="text-[9px] text-brand-slate/50 mt-1 font-normal uppercase tracking-wider">Быстрый ответ и запись на консультацию</span>
           </a>
 
-          <a
-            href="https://max.ru"
-            target="_blank"
-            rel="noreferrer"
-            className="w-full bg-brand-card-bg/65 dark:bg-brand-card-bg/45 backdrop-blur-md hover:bg-brand-btn-hover-bg text-brand-slate font-sans py-4 px-6 rounded-2xl border border-brand-btn-border hover:border-brand-gold/40 transition-all duration-300 shadow-xs hover:shadow-md hover:scale-[1.01] active:scale-[0.98] text-center flex flex-col items-center justify-center cursor-pointer"
+          <button
+            onClick={triggerBlockedToast}
+            className="w-full bg-brand-card-bg/65 dark:bg-brand-card-bg/45 backdrop-blur-md hover:bg-brand-btn-hover-bg text-brand-slate/60 font-sans py-4 px-6 rounded-2xl border border-brand-btn-border/80 transition-all duration-300 shadow-xs text-center flex flex-col items-center justify-center cursor-pointer relative"
           >
-            <span className="text-xs uppercase tracking-[0.15em] font-bold text-brand-slate flex items-center gap-2">
-              <img src={maxLogo} className="h-4.5 w-4.5 object-contain rounded-md logo-brighten" alt="Max" /> МЕССЕНДЖЕР МАКС
+            <span className="text-xs uppercase tracking-[0.15em] font-bold flex items-center gap-2">
+              <img src={maxLogo} className="h-4.5 w-4.5 object-contain rounded-md opacity-60 logo-brighten" alt="Max" /> 
+              <span>МЕССЕНДЖЕР МАКС</span>
+              <Lock className="h-3 w-3 text-brand-gold/80" />
             </span>
-            <span className="text-[9px] text-brand-slate/50 mt-1 font-normal uppercase tracking-wider">Для оперативной связи в чате</span>
-          </a>
+            <span className="text-[9px] text-brand-slate/40 mt-1 font-normal uppercase tracking-wider">Действие временно заблокировано</span>
+          </button>
         </ScrollAnimate>
 
         {/* Heart Rate / ECG divider matching image */}
@@ -468,15 +487,14 @@ export default function App() {
                 <img src={vkLogo} className="h-5.5 w-5.5 object-contain logo-brighten" alt="VK" />
                 <span>ВКонтакте</span>
               </a>
-              <a
-                href="https://max.ru"
-                target="_blank"
-                rel="noreferrer"
-                className="bg-brand-card-bg/65 dark:bg-brand-card-bg/45 backdrop-blur-md hover:bg-brand-btn-hover-bg text-brand-slate text-xs font-semibold px-4 py-2.5 rounded-xl border border-brand-btn-border hover:border-brand-gold/45 hover:scale-[1.02] active:scale-95 hover:shadow-xs transition-all duration-300 flex items-center gap-2 cursor-pointer"
+              <button
+                onClick={triggerBlockedToast}
+                className="bg-brand-card-bg/65 dark:bg-brand-card-bg/45 backdrop-blur-md hover:bg-brand-btn-hover-bg text-brand-slate/60 text-xs font-semibold px-4 py-2.5 rounded-xl border border-brand-btn-border/80 transition-all duration-300 flex items-center gap-2 cursor-pointer relative"
               >
-                <img src={maxLogo} className="h-4.5 w-4.5 object-contain rounded-sm logo-brighten" alt="Max" />
+                <img src={maxLogo} className="h-4.5 w-4.5 object-contain rounded-sm opacity-60 logo-brighten" alt="Max" />
                 <span>Мессенджер МАКС</span>
-              </a>
+                <Lock className="h-3 w-3 text-brand-gold/80" />
+              </button>
               <button
                 onClick={toggleTheme}
                 aria-label="Переключить тему оформления"
@@ -514,7 +532,7 @@ export default function App() {
                 </p>
               </div>
 
-              <p className="text-brand-slate/80 text-lg leading-relaxed max-w-2xl font-serif italic text-gray-600 mb-4">
+              <p className="text-brand-slate/85 text-lg leading-relaxed max-w-2xl font-serif italic mb-4">
                 Глубинная работа с вашими состояниями, позволяющая обрести внутреннюю опору и ясность в мире неопределенности. Профессиональная терапевтическая поддержка от сертифицированного специалиста с действующими сертификатами и многолетним опытом.
               </p>
             </section>
@@ -687,15 +705,16 @@ export default function App() {
                   <img src={vkLogo} className="h-6 w-6 object-contain logo-brighten" alt="VK" />
                   <span className="tracking-wider uppercase text-[10px]">МОЙ ВКОНТАКТЕ</span>
                 </a>
-                <a
-                  href="https://max.ru"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="bg-brand-card-bg/65 dark:bg-brand-card-bg/45 backdrop-blur-md hover:bg-brand-btn-hover-bg/85 text-brand-slate text-xs font-semibold py-3.5 px-4 rounded-xl border border-brand-btn-border hover:border-brand-gold/45 transition-all duration-300 hover:scale-[1.02] active:scale-95 text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer shadow-xs"
+                <button
+                  onClick={triggerBlockedToast}
+                  className="bg-brand-card-bg/65 dark:bg-brand-card-bg/45 backdrop-blur-md hover:bg-brand-btn-hover-bg/85 text-brand-slate/60 text-xs font-semibold py-3.5 px-4 rounded-xl border border-brand-btn-border/80 transition-all duration-300 text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer shadow-xs relative"
                 >
-                  <img src={maxLogo} className="h-5 w-5 object-contain rounded-sm logo-brighten" alt="Max" />
-                  <span className="tracking-wider uppercase text-[10px]">МЕССЕНДЖЕР МАКС</span>
-                </a>
+                  <img src={maxLogo} className="h-5 w-5 object-contain rounded-sm opacity-60 logo-brighten" alt="Max" />
+                  <span className="tracking-wider uppercase text-[10px] flex items-center gap-1 justify-center">
+                    <span>МЕССЕНДЖЕР МАКС</span>
+                    <Lock className="h-3 w-3 text-brand-gold/80 shrink-0" />
+                  </span>
+                </button>
               </div>
 
               <button
@@ -860,6 +879,23 @@ export default function App() {
             <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/60 text-xs font-sans tracking-wide bg-white/10 border border-white/5 px-5 py-2.5 rounded-full backdrop-blur-md text-center pointer-events-none">
               {zoomLevel > 1 ? "Перетаскивайте изображение или нажмите, чтобы уменьшить" : "Нажмите на изображение, чтобы приблизить"}
             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {showBlockedToast && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-brand-slate text-brand-cream-light dark:bg-brand-cream-dark dark:text-brand-slate px-6 py-3.5 rounded-2xl shadow-xl border border-brand-gold/30 flex items-center gap-3 backdrop-blur-md max-w-sm w-[90%] md:w-auto"
+          >
+            <Lock className="h-4 w-4 text-brand-gold shrink-0 animate-pulse" />
+            <span className="text-xs md:text-sm font-medium tracking-wide text-brand-cream-light dark:text-brand-slate">
+              Действие временно заблокировано
+            </span>
           </motion.div>
         )}
       </AnimatePresence>
