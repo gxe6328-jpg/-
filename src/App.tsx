@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useScroll, useSpring } from "motion/react";
 import {
   Award,
   BookOpen,
@@ -126,6 +126,13 @@ const PulseDivider: React.FC<{ className?: string }> = ({ className = "py-3" }) 
 };
 
 export default function App() {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   const [shared, setShared] = useState(false);
   const [openHelpIdx, setOpenHelpIdx] = useState<number | null>(null);
   const [isImageOpen, setIsImageOpen] = useState(false);
@@ -183,6 +190,12 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-brand-cream-light text-brand-charcoal selection:bg-brand-gold/30 selection:text-brand-slate flex flex-col font-sans overflow-x-hidden relative">
+      {/* Scroll Progress Bar */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-[3px] bg-brand-gold origin-left z-50 shadow-[0_1px_3px_rgba(186,160,111,0.3)]"
+        style={{ scaleX }}
+      />
+
       {/* Liquid Glass Background Blur Blobs */}
       <div className="absolute top-[10%] left-[-15%] w-[320px] md:w-[600px] h-[320px] md:h-[600px] bg-brand-gold/8 dark:bg-brand-gold/5 rounded-full blur-[70px] md:blur-[130px] pointer-events-none z-0" />
       <div className="absolute bottom-[20%] right-[-15%] w-[350px] md:w-[700px] h-[350px] md:h-[700px] bg-brand-sage/6 dark:bg-brand-gold/4 rounded-full blur-[80px] md:blur-[150px] pointer-events-none z-0" />
